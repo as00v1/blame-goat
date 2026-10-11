@@ -119,6 +119,8 @@ BlameGoat 做的就是这段翻译。它不是数据面板，是一个**结论 +
 
 **前置**：Windows + 英雄联盟客户端（国服）+ Node.js 18 以上。**不需要 npm install**。
 
+源码：**https://github.com/as00v1/blame-goat**（GPL-3.0，衍生版本需同样开源）
+
 ```bash
 # 1. 双击启动（起本地服务并自动开浏览器）
 start.bat
@@ -378,4 +380,5 @@ node tools/render-preview.mjs      # 把界面渲染结果落成自包含 HTML �
 必须同样以 GPL-3.0 开源，不能闭源发布。**商用仍然允许**，只是源码要一并给出。
 
 > 分发 exe / 安装包时请附上本仓库地址 —— GPL 要求随分发物提供完整源码。
+> 源码：**https://github.com/as00v1/blame-goat**
 > 仓库里的 `data/` 与 `preview/` 已排除：那是本机真实战绩与昵称，本来也不属于源码。
