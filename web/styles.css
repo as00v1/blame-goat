@@ -1,0 +1,945 @@
+/* ──────────────────────────────────────────────────────────
+   BlameGoat 设计系统
+   深色主题（LOL 客户端本身是深色，配套更协调）
+   主强调色：低饱和琥珀 #c99a5b —— 规避高饱和蓝 / 青
+   ────────────────────────────────────────────────────────── */
+
+:root {
+  --bg:          #14161a;
+  --bg-2:        #191c21;
+  --panel:       #1d2127;
+  --panel-2:     #232830;
+  --panel-3:     #272d36;
+  --line:        #2b313a;
+  --line-2:      #363d48;
+
+  --text:        #e7eaef;   /* 正文，强对比 */
+  --text-2:      #9aa4b2;
+  --text-3:      #6b7481;
+
+  --accent:      #c99a5b;
+  --accent-dim:  #8a6d3f;
+  --accent-soft: rgba(201, 154, 91, .12);
+
+  --ok:          #6f9e6f;
+  --warn:        #c2a34a;
+  --danger:      #b85c5c;
+  --slate:       #7d8fa6;
+  --gray:        #6b7481;
+
+  /* 敌我阵营标识：我方绿 / 敌方红（2026-10-11 定）。
+     界面上一处颜色只准表示一个意思 —— 阵营就是阵营，不再借官方蓝红，
+     因为「蓝方/红方」是系统内部编号，玩家真正要一眼分清的是「我方 / 敌方」。
+     绿 #63ab7e / 红 #e0685f：色相 152° vs 4°，近互补 —— 色觉障碍与灰度下也分得开；
+     两色都比状态色（--ok / --danger）亮一档，免得「我方绿」和「这局赢了（绿）」混成一谈。 */
+  --side-my:    #63ab7e;
+  --side-enemy: #e0685f;
+
+  /* 钢蓝：只用在「出装」分类卡的色条上。
+     它原先借用 --side-my —— 阵营一改绿，那张卡就跟着变色了，所以单独拎出来。 */
+  --steel:      #6094b9;
+
+  --radius:      10px;
+  --radius-sm:   6px;
+  --mono:        ui-monospace, "SFMono-Regular", "Cascadia Mono", Consolas, "Liberation Mono", monospace;
+  --sans:        -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", "PingFang SC", "Hiragino Sans GB", sans-serif;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body { height: 100%; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font: 14px/1.6 var(--sans);
+  -webkit-font-smoothing: antialiased;
+  overflow: hidden;
+}
+
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--line-2); border-radius: 6px; border: 2px solid var(--bg); }
+::-webkit-scrollbar-thumb:hover { background: #454d5a; }
+
+/* ── 布局 ── */
+.app { display: flex; flex-direction: column; height: 100vh; }
+
+.topbar {
+  flex: 0 0 auto;
+  height: 54px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 0 20px;
+  background: var(--bg-2);
+  border-bottom: 1px solid var(--line);
+}
+
+.brand { display: flex; align-items: baseline; gap: 8px; font-weight: 600; letter-spacing: .3px; }
+.brand b { color: var(--accent); font-size: 16px; }
+.brand span { color: var(--text-3); font-size: 12px; font-weight: 400; }
+
+.topbar .spacer { flex: 1; }
+
+/* 返回按钮：只在非等待页出现（等待页是根，无处可返） */
+.hidden { display: none !important; }
+#btnBack { margin-right: 2px; }
+
+.client-chip {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 12px; color: var(--text-2);
+  background: var(--panel); border: 1px solid var(--line);
+  padding: 5px 12px; border-radius: 999px;
+}
+.client-chip .port { font-family: var(--mono); color: var(--text-3); }
+
+.dot { width: 7px; height: 7px; border-radius: 50%; background: var(--ok); flex: 0 0 auto; }
+.dot.off  { background: var(--gray); }
+.dot.warn { background: var(--warn); }
+.dot.busy { background: var(--accent); animation: blink 1s steps(2) infinite; }
+@keyframes blink { 50% { opacity: .25; } }
+
+.stage { flex: 1; min-height: 0; overflow: hidden; position: relative; }
+.page { position: absolute; inset: 0; overflow: auto; padding: 28px 32px 40px; display: none; }
+.page.active { display: block; }
+
+/* ── IDLE：首页 = 当前账号战绩 ──
+   主体是列表（不是居中的等待动画），所以顶部对齐、横向拉满。 */
+.page-idle { display: none; }
+.page-idle.active { display: flex; flex-direction: column; align-items: stretch; justify-content: flex-start; }
+
+.home-head {
+  display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
+  padding-bottom: 12px; border-bottom: 1px solid var(--line);
+}
+.home-head .spacer { flex: 1; }
+.home-meta {
+  display: flex; align-items: center; gap: 6px; flex-wrap: wrap;
+  font-size: 12px; color: var(--text-3);
+}
+.home-meta .home-title { font-size: 14px; font-weight: 600; color: var(--text); letter-spacing: .3px; margin-right: 4px; }
+.home-meta b { font-family: var(--mono); font-size: 12.5px; font-weight: 500; color: var(--text-2); }
+.home-meta .sep { color: var(--line-2); }
+
+/* ── 账号切换：本机换账号登录后，战绩要分得清是谁的 ── */
+.acct-box { display: inline-flex; align-items: center; gap: 6px; }
+.acct-box .acct-label { font-size: 12px; color: var(--text-3); }
+.acct-box select {
+  font: inherit; font-size: 12.5px; padding: 3px 8px;
+  background: var(--bg-2); border: 1px solid var(--line-2); border-radius: var(--radius-sm);
+  color: var(--text); cursor: pointer; max-width: 260px;
+}
+.acct-box select:hover { border-color: var(--accent-dim); }
+.acct-box select:disabled { opacity: .65; cursor: not-allowed; }
+/* 「正在看的不是当前登录账号」—— 提示一下，免得以为战绩丢了 */
+.acct-note { font-size: 11.5px; color: var(--warn, #c99a5b); }
+
+/* 搜索召唤师 ID：位置先占住，功能未实现 —— 整体压暗，一眼能看出是占位 */
+.search-box { display: flex; align-items: center; gap: 8px; }
+.search-box input {
+  width: 210px; padding: 5px 10px; font: inherit; font-size: 12.5px;
+  background: var(--bg-2); border: 1px solid var(--line); border-radius: var(--radius-sm);
+  color: var(--text);
+}
+.search-box input:disabled { cursor: not-allowed; }
+.search-box input::placeholder { color: var(--text-3); }
+
+/* 最近搜过：一排胶囊，点一下直接进那个人的战绩。
+   昵称是本机看过的别人 —— 低饱和处理，别在首页抢主角的视线。 */
+.search-hist {
+  display: flex; align-items: center; gap: 6px; flex-wrap: wrap;
+  margin-top: 8px;
+}
+.search-hist .sh-label { font-size: 11.5px; color: var(--text-3); margin-right: 2px; }
+.hist-chip {
+  font: inherit; cursor: pointer; font-size: 12px; line-height: 1.4;
+  padding: 2px 10px; border-radius: 11px;
+  border: 1px solid var(--line); background: var(--bg-2); color: var(--text-2);
+  transition: .15s;
+}
+.hist-chip:hover { color: var(--text); border-color: var(--line-2); background: var(--panel-2); }
+.hist-chip .sh-ago { color: var(--text-3); font-size: 11px; margin-left: 5px; }
+.sh-clear {
+  font: inherit; cursor: pointer; font-size: 11.5px; color: var(--text-3);
+  background: none; border: 0; padding: 0 2px; margin-left: 2px;
+}
+.sh-clear:hover { color: var(--danger); }
+
+.home-sub { display: flex; align-items: baseline; gap: 12px; margin: 12px 0 10px; flex-wrap: wrap; }
+.home-hint { font-size: 11.5px; color: var(--text-3); }
+
+/* 战绩列表吃掉「顶部标题栏 / 汇总行」以下的全部剩余高度。
+   早先是 max-height 钉死的（320px），屏幕再大也只给这么点，白白浪费下半屏；
+   现在交给 flex 撑满，滚动条在列表内部。min-height 是矮窗口的兜底 ——
+   窗口真不够高时由 .page-idle 自己出滚动条，而不是把列表压成一条缝。 */
+.home-list { flex: 1 1 auto; min-height: 180px; }
+
+.radar {
+  position: relative; width: 240px; height: 240px; border-radius: 50%;
+  border: 1px solid var(--line-2);
+  background: radial-gradient(circle, rgba(201,154,91,.05) 0%, transparent 70%);
+  animation: breathe 3.6s ease-in-out infinite;
+}
+@keyframes breathe {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(201,154,91,.00); transform: scale(1); }
+  50%      { box-shadow: 0 0 34px 2px rgba(201,154,91,.10); transform: scale(1.02); }
+}
+.radar::before {
+  content: ''; position: absolute; inset: 0; border-radius: 50%;
+  background: conic-gradient(from 0deg, transparent 0deg, rgba(201,154,91,.28) 40deg, transparent 90deg);
+  animation: sweep 3.2s linear infinite;
+}
+@keyframes sweep { to { transform: rotate(360deg); } }
+.radar i {
+  position: absolute; border-radius: 50%; border: 1px solid var(--line);
+  left: 50%; top: 50%; transform: translate(-50%, -50%);
+}
+.radar i:nth-child(1) { width: 33%; height: 33%; }
+.radar i:nth-child(2) { width: 66%; height: 66%; }
+.radar i:nth-child(3) { width: 100%; height: 100%; }
+.radar .core {
+  position: absolute; left: 50%; top: 50%; width: 10px; height: 10px; margin: -5px 0 0 -5px;
+  border-radius: 50%; background: var(--accent); box-shadow: 0 0 14px rgba(201,154,91,.8);
+}
+
+.idle-title { margin-top: 28px; font-size: 18px; font-weight: 600; letter-spacing: .4px; }
+.idle-sub { margin-top: 6px; color: var(--text-3); font-size: 13px; }
+
+.idle-meta {
+  margin-top: 26px; display: flex; gap: 28px;
+  font-size: 12px; color: var(--text-2);
+}
+.idle-meta div { text-align: center; }
+.idle-meta b { display: block; font-family: var(--mono); font-size: 15px; color: var(--text); font-weight: 500; margin-top: 4px; }
+
+/* ── 按钮 ── */
+.btn {
+  font: inherit; cursor: pointer; border-radius: var(--radius-sm);
+  border: 1px solid var(--line-2); background: var(--panel-2); color: var(--text);
+  padding: 8px 18px; transition: .15s; white-space: nowrap; flex: 0 0 auto;
+}
+.btn:hover { background: var(--panel-3); border-color: #454d5a; }
+.btn.primary { background: var(--accent); border-color: var(--accent); color: #1a1408; font-weight: 600; }
+.btn.primary:hover { background: #d8a968; }
+.btn.ghost { background: transparent; }
+.btn.sm { padding: 5px 12px; font-size: 12px; }
+/* 「不判定」这类逻辑上禁用的按钮：显式灰掉，别让人以为点了没反应 */
+.btn:disabled { opacity: .5; cursor: not-allowed; background: var(--panel-2); }
+.btn.primary:disabled { background: var(--panel-2); color: var(--text-3); border-color: var(--line-2); font-weight: 400; }
+.btn-row { display: flex; gap: 10px; margin-top: 30px; }
+
+/* 主页次级入口：全局配置（设置 / 提示词）。
+   它们跟「哪一局」无关，所以只出现在主页，不跟着战报详情走。 */
+.idle-links {
+  margin-top: 20px; display: flex; align-items: center; gap: 8px;
+  font-size: 12.5px; color: var(--text-3);
+}
+.link-btn {
+  font: inherit; font-size: 12.5px; line-height: 1.6;
+  cursor: pointer; padding: 0 1px;
+  background: none; border: none; border-bottom: 1px solid transparent;
+  color: var(--text-3); transition: .15s;
+}
+.link-btn:hover { color: var(--accent); border-bottom-color: var(--accent); }
+.idle-links .dot-sep { color: var(--line-2); }
+
+.idle-hint {
+  margin-top: 22px; font-size: 12px; color: var(--text-3);
+  font-family: var(--mono); letter-spacing: .2px;
+}
+.idle-hint.err { color: var(--warn); }
+
+/* ── 浮层提示 ── */
+#toast {
+  position: fixed; left: 50%; bottom: 34px; transform: translate(-50%, 14px);
+  max-width: 70vw; padding: 10px 20px; border-radius: 999px;
+  background: var(--panel-2); border: 1px solid var(--line-2);
+  color: var(--text); font-size: 13px; line-height: 1.5;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, .45);
+  opacity: 0; pointer-events: none; transition: opacity .22s, transform .22s;
+  z-index: 90;
+}
+#toast.show { opacity: 1; transform: translate(-50%, 0); }
+#toast.err { border-color: var(--warn); color: var(--warn); }
+
+/* ── ANALYZING ── */
+.page-analyzing { display: none; }
+.page-analyzing.active { display: flex; flex-direction: column; align-items: center; justify-content: center; }
+
+.analyzing-head { font-size: 15px; color: var(--text-2); margin-bottom: 30px; letter-spacing: .5px; }
+
+.steps { display: flex; flex-direction: column; gap: 2px; width: 380px; }
+.step {
+  display: flex; align-items: center; gap: 14px;
+  padding: 13px 16px; border-radius: var(--radius-sm);
+  color: var(--text-3); font-size: 13.5px;
+  border: 1px solid transparent; transition: .25s;
+}
+.step .mark {
+  width: 18px; height: 18px; border-radius: 50%; flex: 0 0 auto;
+  border: 1.5px solid var(--line-2); position: relative;
+}
+.step.is-active { color: var(--text); background: var(--panel); border-color: var(--line); }
+.step.is-active .mark { border-color: var(--accent); }
+.step.is-active .mark::after {
+  content: ''; position: absolute; inset: 3px; border-radius: 50%; background: var(--accent);
+  animation: blink 1s steps(2) infinite;
+}
+.step.is-done { color: var(--text-2); }
+.step.is-done .mark { border-color: var(--ok); background: var(--ok); }
+.step.is-done .mark::after {
+  content: ''; position: absolute; left: 4px; top: 5.5px;
+  width: 8px; height: 4px; border-left: 1.5px solid #12140f; border-bottom: 1.5px solid #12140f;
+  transform: rotate(-45deg);
+}
+.step .time { margin-left: auto; font-family: var(--mono); font-size: 11px; color: var(--text-3); }
+
+.progress-track { width: 380px; height: 3px; background: var(--line); border-radius: 2px; margin-top: 26px; overflow: hidden; }
+.progress-bar { height: 100%; width: 0; background: var(--accent); transition: width .45s ease; }
+
+/* ── 判定真进度（服务端 SSE 推来的「模型在写」） ──
+   一行三段：呼吸点（在动） / 阶段文案 / 细节（已用秒 · 已输出字数）。
+   兜底那一下必须显眼 —— 用户要能看出「这次结论是本地兜底的、为什么」。 */
+.judge-status {
+  display: flex; align-items: center; gap: 10px;
+  width: 380px; margin-top: 16px; padding: 10px 14px;
+  border: 1px solid var(--line); border-radius: var(--radius-sm);
+  background: var(--panel); font-size: 12.5px; color: var(--text-2);
+}
+.judge-status .judge-dot {
+  width: 7px; height: 7px; border-radius: 50%; flex: 0 0 auto;
+  background: var(--accent); animation: blink 1.1s steps(2) infinite;
+}
+.judge-status .judge-text { color: var(--text); }
+.judge-status .judge-meta {
+  margin-left: auto; font-family: var(--mono); font-size: 11px; color: var(--text-3);
+  white-space: nowrap;
+}
+.judge-status.is-fallback {
+  border-color: var(--warn); background: rgba(194, 163, 74, .10);
+}
+.judge-status.is-fallback .judge-dot { background: var(--warn); animation: none; }
+.judge-status.is-fallback .judge-text { color: var(--warn); }
+.judge-status.is-fallback .judge-meta { color: var(--text-2); }
+
+/* ── REPORT 页签 ── */
+.tabs {
+  display: flex; gap: 2px; border-bottom: 1px solid var(--line);
+  margin: -8px -32px 24px; padding: 0 32px;
+  position: sticky; top: -28px; background: var(--bg); z-index: 5;
+}
+.tab {
+  font: inherit; cursor: pointer; background: none; border: none; color: var(--text-3);
+  padding: 12px 16px; border-bottom: 2px solid transparent; transition: .15s;
+}
+.tab:hover { color: var(--text-2); }
+.tab.active { color: var(--accent); border-bottom-color: var(--accent); }
+
+.pane { display: none; }
+.pane.active { display: block; }
+
+/* ── 战报 ── */
+.verdict-box {
+  background: linear-gradient(180deg, var(--panel) 0%, var(--bg-2) 100%);
+  border: 1px solid var(--line); border-left: 3px solid var(--accent);
+  border-radius: var(--radius); padding: 16px 22px; margin-bottom: 12px;
+}
+/* verdict 由 40 字放宽到 60 字（v3.0），标题会折成两行 —— 给它一个舒服的行高 */
+.verdict-box h2 { font-size: 19px; font-weight: 600; letter-spacing: .3px; line-height: 1.5; }
+
+/* ── 团队视角分类卡：阵容 / 海克斯 / 出装 ──
+   三条团队级结论，跟个人判定分开放 —— 随机分配的东西不该记在某个人头上。
+   左侧色条按维度区分（板岩 / 金 / 钢蓝），低饱和只做辨识不做强调。 */
+.team-box {
+  display: grid; gap: 12px;
+  grid-template-columns: repeat(auto-fit, minmax(215px, 1fr));
+  margin: 0 0 14px;
+}
+.team-box .ti-item {
+  background: var(--panel-2); border: 1px solid var(--line); border-left: 3px solid var(--line-2);
+  border-radius: var(--radius-sm); padding: 12px 14px;
+}
+.ti-item[data-tone="comp"] { border-left-color: var(--slate); }
+.ti-item[data-tone="aug"]  { border-left-color: var(--accent); }
+.ti-item[data-tone="item"] { border-left-color: var(--steel); }
+.team-box h5 {
+  display: flex; align-items: center; gap: 7px;
+  font-size: 11px; font-weight: 600; letter-spacing: 1.4px;
+  text-transform: uppercase; color: var(--text-3); margin-bottom: 7px;
+}
+.team-box h5::before { content: ''; width: 7px; height: 7px; border-radius: 2px; background: var(--text-3); }
+.ti-item[data-tone="comp"] h5::before { background: var(--slate); }
+.ti-item[data-tone="aug"]  h5::before { background: var(--accent); }
+.ti-item[data-tone="item"] h5::before { background: var(--steel); }
+.team-box p { font-size: 12.5px; line-height: 1.75; color: var(--text-2); }
+
+/* 局势总览：判定后的一整段长文。section-title 通用样式上边距 26px，
+   这里紧跟分类卡，收紧一点。 */
+#insightWrap .section-title { margin: 6px 0 10px; }
+.insight-text {
+  color: var(--text-2); font-size: 13.5px; line-height: 1.9;
+  margin: 0 0 16px; white-space: pre-wrap;
+}
+
+.section-title {
+  display: flex; align-items: center; gap: 10px;
+  font-size: 12px; color: var(--text-3); letter-spacing: 1.4px;
+  text-transform: uppercase; margin: 26px 0 12px;
+}
+.section-title::after { content: ''; flex: 1; height: 1px; background: var(--line); }
+/* 标题里的计数（时间轴条数），不参与大写与小字距 */
+.section-title .count {
+  text-transform: none; letter-spacing: 0;
+  font-family: var(--mono); font-size: 11px; color: var(--text-3);
+}
+/* 颜色图例：时间轴里名字按敌我分了色，得先告诉人哪一色是哪边 */
+.section-title .tl-legend {
+  display: inline-flex; align-items: center; gap: 5px;
+  text-transform: none; letter-spacing: 0; font-size: 11px; color: var(--text-3);
+}
+.section-title .tl-legend i { width: 8px; height: 8px; border-radius: 2px; }
+.section-title .tl-legend i[data-side="my"]    { background: var(--side-my); }
+.section-title .tl-legend i[data-side="enemy"] { background: var(--side-enemy); margin-left: 8px; }
+
+/* 长列表滚动区 —— 真机一局 190+ 条击杀，全铺开会把页面撑成几屏。
+   高度不再写死：由容器（flex 撑满）或上层 max-height 决定，这里只管滚动。 */
+.scroll-y {
+  overflow-y: auto; overflow-x: hidden;
+  padding-right: 6px; overscroll-behavior: contain;
+}
+.scroll-y::-webkit-scrollbar { width: 8px; }
+.scroll-y::-webkit-scrollbar-track { background: var(--bg-2); border-radius: 4px; }
+.scroll-y::-webkit-scrollbar-thumb { background: var(--line-2); border-radius: 4px; }
+.scroll-y::-webkit-scrollbar-thumb:hover { background: var(--accent-dim); }
+
+/* ── 评分表：我方 / 敌方，每人一行 ──
+   一行 = 左半客观数据（英雄 / K·D·A / 海克斯 / 出装）+ 右半判定结果（评分 / 头衔）。
+   「他带了什么」和「我们怎么判」并排，才好对着看。
+   列宽由 grid 定死 —— 10 行之间必须能竖着比，格子数量多一个少一个都不该让列跑偏。 */
+/* ── 分类切换条 ──
+   评分表上方那一行：同一批 10 个人，换个看法。默认「按阵营」——
+   它回答的是「谁是我的队友」；结论 / 定位是补充视角，不是替代。 */
+.sb-toolbar { display: flex; align-items: center; gap: 10px; margin: 0 0 14px; }
+.sb-toolbar-label { font-size: 12px; color: var(--text-3); letter-spacing: 1.4px; }
+.sb-toolbar-hint { margin-left: auto; font-size: 11.5px; color: var(--text-3); font-family: var(--mono); }
+
+.seg-ctrl { display: inline-flex; gap: 2px; padding: 2px;
+  background: var(--panel-2); border: 1px solid var(--line-2); border-radius: 8px; }
+.seg-btn { appearance: none; border: 0; background: transparent; color: var(--text-3);
+  font: inherit; font-size: 12.5px; padding: 4px 13px; border-radius: 6px;
+  cursor: pointer; transition: background .15s, color .15s; white-space: nowrap; }
+.seg-btn:hover { color: var(--text); }
+.seg-btn.active { background: var(--panel); color: var(--text); }
+
+/* 组标题：色标 + 组名 + 人数 ……… 摘要。
+   色标沿用「阵营 / 结论」各自原有的颜色 —— 同一个东西在哪都是同一个色。 */
+.section-title .gt-mark { width: 8px; height: 8px; border-radius: 2px; flex: 0 0 auto; background: var(--gray); }
+.section-title .gt-name { text-transform: none; letter-spacing: .3px;
+  font-size: 12.5px; font-weight: 600; color: var(--text-2); }
+.section-title .gt-note { text-transform: none; letter-spacing: 0;
+  font-size: 11.5px; font-family: var(--mono); color: var(--text-3); }
+.gt-mark[data-tone="my"]         { background: var(--side-my); }
+.gt-mark[data-tone="enemy"]      { background: var(--side-enemy); }
+.gt-mark[data-tone="CARRY"]      { background: var(--ok); }
+.gt-mark[data-tone="BLAME"]      { background: var(--danger); }
+.gt-mark[data-tone="FREELOADER"] { background: var(--warn); }
+.gt-mark[data-tone="TEFLON"]     { background: var(--slate); }
+.gt-mark[data-tone="NORMAL"]     { background: var(--gray); }
+.gt-mark[data-tone="role"]       { background: var(--text-3); }
+
+/* 分组是动态生成的，块间距统一由这边管，免得组一多就散架 */
+#sbGroups .sb-block { margin-bottom: 22px; }
+#sbGroups .sb-block:last-child { margin-bottom: 0; }
+#sbGroups .section-title { margin: 0 0 12px; }
+
+.sb-block { margin-bottom: 4px; }
+.sb-head, .sb-row {
+  display: grid; align-items: center; gap: 12px;
+  grid-template-columns: minmax(148px, 1.4fr) 76px 128px 114px 164px 44px 58px;
+}
+.sb-head {
+  padding: 0 14px 8px;
+  font-size: 11px; color: var(--text-3); letter-spacing: 1px; text-transform: uppercase;
+}
+.sb-head span:nth-child(2),
+.sb-head span:nth-child(3),
+.sb-head span:nth-child(6) { text-align: center; }
+.sb-head span:nth-child(7) { text-align: right; }
+
+.sb-item {
+  background: var(--panel); border: 1px solid var(--line);
+  border-left: 3px solid var(--gray);
+  border-radius: var(--radius-sm); margin-bottom: 6px; cursor: pointer;
+  transition: border-color .15s, background .15s;
+}
+.sb-item:hover { background: var(--panel-2); border-color: var(--line-2); }
+.sb-item[data-label="CARRY"]      { border-left-color: var(--ok); }
+.sb-item[data-label="BLAME"]      { border-left-color: var(--danger); }
+.sb-item[data-label="TEFLON"]     { border-left-color: var(--slate); }
+.sb-item[data-label="FREELOADER"] { border-left-color: var(--warn); }
+.sb-item[data-label="NORMAL"]     { border-left-color: var(--gray); }
+.sb-row { padding: 9px 14px; }
+
+.sb-who { display: flex; align-items: center; gap: 10px; min-width: 0; }
+.sb-names { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.sb-names b {
+  font-size: 13px; font-weight: 600; color: var(--text);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.sb-names em {
+  font-style: normal; font-size: 10.5px; color: var(--text-3);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+/* 名字是这份表里唯一要按敌我分辨的文本 —— 定位、KDA 都是中性的，不跟着上色 */
+.sb-names .nm { font-size: 11.5px; font-weight: 600; }
+
+.sb-kda { font-family: var(--mono); font-size: 12.5px; color: var(--text-2); text-align: center; }
+.sb-kda b { font-weight: 600; color: var(--text); }
+
+/* 关键数据三小格（输出 / 承伤 / 治疗）：上标签下数值，绝值为主、速率进 tooltip */
+.sb-stats { display: flex; justify-content: center; gap: 14px; }
+.sb-stats .kv { display: flex; flex-direction: column; align-items: center; gap: 2px; min-width: 0; }
+.sb-stats .kv em {
+  font-style: normal; font-size: 9.5px; color: var(--text-3);
+  letter-spacing: .5px; white-space: nowrap;
+}
+.sb-stats .kv b {
+  font-family: var(--mono); font-size: 12.5px; font-weight: 500;
+  color: var(--text-2); white-space: nowrap;
+}
+
+/* 海克斯 / 出装：一排固定尺寸的小格子，图标加载不出来就露首字 */
+.sb-slots { display: flex; gap: 3px; }
+.sb-slots.empty { color: var(--text-3); font-size: 12px; }
+.slot {
+  position: relative; overflow: hidden; flex: 0 0 auto;
+  width: 22px; height: 22px; border-radius: 5px;
+  display: grid; place-items: center;
+  background: var(--bg-2); border: 1px solid var(--line);
+  color: var(--text-2); font-style: normal; font-size: 11px; line-height: 1;
+}
+.slot img {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  object-fit: cover; border-radius: 4px;
+}
+/* 符文按稀有度描边（银 / 金 / 棱彩 / 事件）—— 低饱和，只做区分不抢戏 */
+.slot.aug-kSilver      { border-color: #7d8fa6; }
+.slot.aug-kGold        { border-color: #c99a5b; }
+.slot.aug-kPrismatic   { border-color: #a98ac4; }
+.slot.aug-kEventChoice { border-color: #6f9e6f; }
+
+.sb-score { font-family: var(--mono); font-size: 17px; font-weight: 600; color: var(--text-2);
+  display: flex; flex-direction: column; align-items: center; gap: 4px; }
+/* 评分条：数字给人算，条给人看 —— 十行扫下来谁高谁低一眼分明 */
+.sb-bar { display: block; width: 46px; height: 3px; border-radius: 2px;
+  background: var(--line-2); position: relative; overflow: hidden; }
+.sb-bar::after { content: ''; position: absolute; inset: 0 auto 0 0;
+  width: var(--w, 0%); background: currentColor; border-radius: 2px; }
+.sb-score[data-label="CARRY"]      { color: var(--ok); }
+.sb-score[data-label="BLAME"]      { color: var(--danger); }
+.sb-score[data-label="TEFLON"]     { color: var(--slate); }
+.sb-score[data-label="FREELOADER"] { color: var(--warn); }
+.sb-score[data-label="NORMAL"]     { color: var(--text-2); }
+/* 还没判定（详情态）：评分是个破折号，别给它任何「这是一档分数」的颜色，条也收掉 */
+.sb-score[data-label=""]           { color: var(--text-3); }
+.sb-score[data-label=""] .sb-bar   { display: none; }
+
+.sb-tag { font-size: 11.5px; text-align: right; white-space: nowrap; color: var(--text-3); }
+.sb-tag[data-label="CARRY"]      { color: var(--ok); }
+.sb-tag[data-label="BLAME"]      { color: var(--danger); }
+.sb-tag[data-label="TEFLON"]     { color: var(--slate); }
+.sb-tag[data-label="FREELOADER"] { color: var(--warn); }
+.sb-tag[data-label="NORMAL"]     { color: var(--gray); }
+.sb-tag[data-label=""]           { color: var(--text-3); }
+
+/* 展开区：默认收起，点行才铺开理由与证据 */
+.sb-detail { max-height: 0; overflow: hidden; transition: max-height .28s ease; }
+.sb-item.open .sb-detail { max-height: 420px; }
+.sb-detail-inner { padding: 0 14px 14px; border-top: 1px solid var(--line); }
+.sb-detail-inner .reason { margin: 13px 0 11px; font-size: 13px; color: var(--text-2); }
+/* 未判定时的那句说明 —— 是提示不是结论，别跟判定理由一个分量 */
+.sb-detail-inner .reason.muted { color: var(--text-3); font-size: 12.5px; }
+
+/* 英雄标识：头像 + 英雄名。英雄名是识别玩家的第一信息，不再是角落里的小灰字 */
+.champ-badge {
+  position: relative; overflow: hidden;
+  flex: 0 0 auto; width: 34px; height: 34px; border-radius: 8px;
+  display: grid; place-items: center;
+  background: linear-gradient(160deg, var(--panel-3), var(--bg-2));
+  border: 1px solid var(--line-2); border-left: 2px solid var(--accent-dim);
+  color: var(--accent); font-size: 16px; font-weight: 600; line-height: 1;
+  font-family: var(--sans);
+}
+.champ-badge i { font-style: normal; }
+/* 真机接入后的官方头像：盖在首字占位之上；加载失败时 onerror 移除自己，露出首字 */
+.champ-badge img {
+  position: absolute; inset: 0; display: block;
+  width: 100%; height: 100%; object-fit: cover; border-radius: 7px;
+}
+.evidences { display: flex; flex-direction: column; gap: 6px; }
+.evidence {
+  font-family: var(--mono); font-size: 11.5px; color: var(--text-2);
+  background: var(--bg-2); border: 1px solid var(--line);
+  border-radius: var(--radius-sm); padding: 6px 10px;
+}
+.evidence::before { content: '▸ '; color: var(--accent-dim); }
+/* ── 时间轴：一行一个时间点 ── */
+.tl-list {
+  display: flex; flex-direction: column;
+  max-height: 460px;               /* 真机一局 190+ 条事件，靠滚动兜住，别把页面撑成几屏 */
+  overflow-y: auto; overscroll-behavior: contain;
+  background: var(--panel); border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+.tl-list::-webkit-scrollbar { width: 8px; }
+.tl-list::-webkit-scrollbar-track { background: transparent; }
+.tl-list::-webkit-scrollbar-thumb { background: var(--line-2); border-radius: 4px; }
+.tl-list::-webkit-scrollbar-thumb:hover { background: var(--accent-dim); }
+
+.tl-row {
+  display: grid; grid-template-columns: 56px 58px minmax(0, 1fr);
+  gap: 12px; align-items: baseline;
+  padding: 7px 12px; font-size: 12.5px; line-height: 1.55;
+  border-bottom: 1px solid var(--line);
+}
+.tl-row:last-child { border-bottom: none; }
+.tl-row:hover { background: var(--panel-2); }
+
+.tl-time { font-family: var(--mono); font-size: 12px; color: var(--text-3); white-space: nowrap; }
+.tl-kind {
+  justify-self: start; white-space: nowrap; font-size: 10.5px; line-height: 1.65;
+  padding: 0 6px; border-radius: 4px; color: var(--text-3);
+  background: var(--bg-2); border: 1px solid var(--line-2);
+}
+/* 击杀是绝大多数事件，给一点强调色，扫的时候能一眼略过 */
+.tl-row[data-kind="CHAMPION_KILL"] .tl-kind {
+  color: var(--accent); background: var(--accent-soft); border-color: var(--accent-dim);
+}
+.tl-body { min-width: 0; color: var(--text-2); }
+/* 时间轴里的名字：按阵营着色，我方钢蓝 / 敌方陶土红。
+   攻方、阵亡方、助攻名单共用一套 —— 一行之内谁是自己人一眼分清。
+   英雄名跟昵称同色（不降调）：10.5px 小字再压暗就低于 AA 了，改靠字号与括号分主次 */
+.tl-row .tl-name { color: var(--text); }
+.tl-row .tl-name[data-side="my"]    { color: var(--side-my); }
+.tl-row .tl-name[data-side="enemy"] { color: var(--side-enemy); }
+.tl-row .tl-champ { font-style: normal; font-size: 10.5px; color: var(--accent-dim); }
+.tl-row .tl-champ[data-side="my"]    { color: var(--side-my); }
+.tl-row .tl-champ[data-side="enemy"] { color: var(--side-enemy); }
+.tl-row .tl-champ::before { content: '('; }
+.tl-row .tl-champ::after  { content: ')'; }
+.tl-row .tl-arrow { color: var(--text-3); }
+.tl-row .tl-as { color: var(--text-3); }
+.statline {
+  display: flex; flex-wrap: wrap; gap: 4px 14px; margin: 12px 0 4px;
+  font-size: 11.5px; color: var(--text-3);
+}
+.statline span b { color: var(--text-2); font-family: var(--mono); font-weight: 500; }
+/* 每分钟速率：主值的补充说明，比主值低一档 */
+.statline span i {
+  font-style: normal; font-size: 10.5px; color: var(--text-3);
+  font-family: var(--mono); margin-left: 1px;
+}
+
+/* ── 播报 ── */
+.cast-grid { display: grid; grid-template-columns: 1fr 300px; gap: 18px; align-items: start; }
+.cast-text {
+  background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius);
+  padding: 20px 22px; font-size: 15px; line-height: 2; min-height: 150px;
+}
+.cast-side { display: flex; flex-direction: column; gap: 14px; }
+.mini-panel { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 16px; }
+.mini-panel h4 { font-size: 12px; color: var(--text-3); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 12px; }
+
+.tone-group { display: flex; flex-direction: column; gap: 8px; }
+.tone-btn {
+  font: inherit; text-align: left; cursor: pointer;
+  background: var(--bg-2); border: 1px solid var(--line); color: var(--text-2);
+  padding: 9px 12px; border-radius: var(--radius-sm); transition: .15s;
+}
+.tone-btn:hover { border-color: var(--line-2); color: var(--text); }
+.tone-btn.active { border-color: var(--accent); color: var(--accent); background: var(--accent-soft); }
+
+.wave { display: flex; align-items: flex-end; gap: 3px; height: 46px; margin-top: 4px; }
+.wave i { flex: 1; background: var(--accent); border-radius: 1px; height: 20%; opacity: .55; }
+.wave.playing i { animation: wave 1.1s ease-in-out infinite; opacity: .9; }
+.wave i:nth-child(2n)  { animation-delay: .12s; }
+.wave i:nth-child(3n)  { animation-delay: .24s; }
+.wave i:nth-child(5n)  { animation-delay: .36s; }
+@keyframes wave { 0%,100% { height: 15%; } 50% { height: 100%; } }
+
+.chan { font-size: 12px; color: var(--text-3); line-height: 1.9; font-family: var(--mono); }
+.chan b { color: var(--text-2); font-weight: 500; }
+
+/* ── 历史 ── */
+.hist-head, .hist-row {
+  display: grid; grid-template-columns: 180px 70px 1fr 150px; gap: 14px; align-items: center;
+}
+.hist-head { font-size: 11px; color: var(--text-3); letter-spacing: 1px; text-transform: uppercase; padding: 0 14px 10px; }
+.hist-row {
+  background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius-sm);
+  padding: 12px 14px; margin-bottom: 6px;
+}
+.hist-row .who { font-weight: 600; display: flex; align-items: center; gap: 7px; min-width: 0; }
+.hist-row .who em {
+  font-style: normal; font-size: 11px; font-weight: 400; color: var(--accent-dim);
+  border: 1px solid var(--line-2); border-radius: 3px; padding: 0 5px; white-space: nowrap;
+}
+.hist-row .games { font-family: var(--mono); color: var(--text-2); }
+.bars { display: flex; height: 6px; border-radius: 3px; overflow: hidden; background: var(--bg-2); }
+.bars i { height: 100%; }
+.bars i[data-label="CARRY"]      { background: var(--ok); }
+.bars i[data-label="BLAME"]      { background: var(--danger); }
+.bars i[data-label="TEFLON"]     { background: var(--slate); }
+.bars i[data-label="FREELOADER"] { background: var(--warn); }
+.bars i[data-label="NORMAL"]     { background: #3a4149; }
+.hist-row .recent { font-size: 12px; color: var(--text-3); text-align: right; font-family: var(--mono); }
+
+/* ── 战绩列表 ── */
+.mh-sum { font-size: 12.5px; color: var(--text-2); }
+.mh-sum b { color: var(--accent); font-family: var(--mono); font-size: 14px; }
+
+/* 九列：时间 / 模式 / 英雄 / KDA / 输出 / 承伤 / 结果 / 状态 / 操作。
+   英雄列是唯一的 1fr —— 其余给固定宽，数据列宽度够用就行，
+   不留大片空白（原来英雄列独吞 1fr，屏幕越大越空）。 */
+.mh-head, .mh-row {
+  display: grid; gap: 12px; align-items: center;
+  grid-template-columns: 112px 100px minmax(110px, 1fr) 88px 66px 66px 42px 56px 56px;
+}
+.mh-head {
+  font-size: 11px; color: var(--text-3); letter-spacing: 1px; text-transform: uppercase;
+  padding: 0 14px 10px;
+}
+/* 高度交给 .home-list 的 flex（见上），这里不再钉死 —— 钉死就等于屏幕越大越浪费 */
+.mh-list { min-height: 0; }
+
+/* 列表加载占位：拉一个人的战绩要逐局读详情，几百局得等几秒，不能让人干瞪眼 */
+.mh-loading {
+  display: flex; align-items: center; gap: 10px;
+  padding: 26px 4px; color: var(--text-3); font-size: 13px;
+}
+.mh-loading .spin {
+  width: 13px; height: 13px; flex: 0 0 auto; border-radius: 50%;
+  border: 2px solid var(--line-2); border-top-color: var(--accent);
+  animation: spin .8s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.mh-row {
+  background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius-sm);
+  padding: 10px 14px; margin-bottom: 6px; cursor: pointer;
+  transition: border-color .14s ease, background .14s ease, transform .14s ease;
+}
+.mh-row:hover { background: var(--panel-2); border-color: var(--line-2); transform: translateX(2px); }
+/* 已分析过的用左侧色条标出来，扫一眼就知道哪些出过战报 */
+.mh-row[data-analyzed="1"] { border-left: 3px solid var(--accent-dim); }
+
+/* 点开正在读盘的这一行：压暗 + 状态格变「读取中…」，不切整页 */
+.mh-row.is-busy { opacity: .55; pointer-events: none; }
+.mh-row.is-busy .mh-state { color: var(--accent); }
+
+.mh-time { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.mh-time b { font-size: 12.5px; color: var(--text); font-family: var(--mono); font-weight: 500; }
+.mh-time em { font-style: normal; font-size: 10.5px; color: var(--text-3); font-family: var(--mono); }
+
+.mh-mode { font-size: 12.5px; color: var(--text-2); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+.mh-champ { display: flex; align-items: center; gap: 9px; min-width: 0; }
+.mh-champ b { font-size: 13px; color: var(--text); font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.champ-badge.sm { width: 28px; height: 28px; border-radius: 7px; font-size: 13px; }
+.champ-badge.sm img { border-radius: 6px; }
+.champ-badge.empty { color: var(--text-3); border-left-color: var(--line-2); }
+
+.mh-kda { font-family: var(--mono); font-size: 12.5px; color: var(--text-2); }
+
+/* 关键数据格（输出 / 承伤）：与「时间」列同构 —— 主行绝对值，副行每分钟速率。
+   速率是为了抹平对局时长差：14 分钟的局和 28 分钟的局，绝对值没法直接比。 */
+.mh-stat { display: flex; flex-direction: column; gap: 2px; min-width: 0; text-align: right; }
+.mh-head > span:nth-child(5), .mh-head > span:nth-child(6) { text-align: right; }
+.mh-stat b { font-family: var(--mono); font-size: 12.5px; color: var(--text); font-weight: 500; }
+.mh-stat em { font-style: normal; font-family: var(--mono); font-size: 10.5px; color: var(--text-3); }
+
+.mh-win {
+  font-size: 12px; font-weight: 600; text-align: center; border-radius: 3px; padding: 2px 0;
+  border: 1px solid var(--line-2); color: var(--text-3);
+}
+.mh-win.win  { color: var(--ok);     border-color: rgba(111,158,111,.45); background: rgba(111,158,111,.10); }
+.mh-win.lose { color: var(--danger); border-color: rgba(184,92,92,.42);   background: rgba(184,92,92,.10); }
+
+.mh-state { font-size: 11px; text-align: center; color: var(--text-3); }
+.mh-state.done { color: var(--accent); }
+.mh-state.todo { color: var(--text-3); }
+
+.mh-act { text-align: right; }
+.mh-again { padding: 3px 8px; font-size: 11px; }
+
+.mh-empty { padding: 28px 0; text-align: center; color: var(--text-3); font-size: 13px; }
+
+/* ── 日期分割条：一铺几百行，靠它找回「那天那局」 ── */
+.mh-day {
+  display: flex; align-items: center; gap: 10px;
+  padding: 14px 4px 8px;
+}
+.mh-day:first-child { padding-top: 2px; }
+.mh-day .day-name {
+  font-size: 12.5px; font-weight: 600; color: var(--text-2); letter-spacing: .3px;
+}
+.mh-day em {
+  font-style: normal; font-size: 11px; color: var(--text-3); font-family: var(--mono);
+}
+.mh-day .day-line { flex: 1; height: 1px; background: var(--line); }
+.mh-day .day-count {
+  font-size: 11px; color: var(--text-3); font-family: var(--mono);
+}
+
+/* ── 设置 ── */
+.form { max-width: 620px; }
+.form-row {
+  display: grid; grid-template-columns: 150px 1fr; gap: 18px; align-items: center;
+  padding: 13px 0; border-bottom: 1px solid var(--line);
+}
+.form-row > label { text-align: right; color: var(--text-2); font-size: 13px; }
+.form-row .ctrl { display: flex; align-items: center; gap: 10px; }
+/* Key 那一栏的说明是两行（来源 + 明文落盘路径），所以要保留换行 */
+.form-row .desc { grid-column: 2; font-size: 11.5px; color: var(--text-3); margin-top: -6px; white-space: pre-line; }
+
+input[type="text"], input[type="password"], input[type="number"], select, textarea {
+  font: inherit; background: var(--bg-2); border: 1px solid var(--line-2); color: var(--text);
+  padding: 7px 11px; border-radius: var(--radius-sm); outline: none; transition: .15s; width: 100%;
+}
+input:focus, select:focus, textarea:focus { border-color: var(--accent); }
+input::placeholder { color: var(--text-3); }
+textarea { font-family: var(--mono); font-size: 12px; line-height: 1.7; resize: vertical; }
+
+.switch { position: relative; width: 40px; height: 22px; flex: 0 0 auto; cursor: pointer; }
+.switch input { position: absolute; opacity: 0; width: 100%; height: 100%; margin: 0; cursor: pointer; }
+.switch i {
+  position: absolute; inset: 0; border-radius: 999px; background: var(--line-2); transition: .2s;
+}
+.switch i::after {
+  content: ''; position: absolute; left: 2px; top: 2px; width: 18px; height: 18px;
+  border-radius: 50%; background: var(--text-2); transition: .2s;
+}
+.switch input:checked + i { background: var(--accent-dim); }
+.switch input:checked + i::after { transform: translateX(18px); background: var(--accent); }
+
+/* ── 提示词 ── */
+.prompt-grid { display: grid; grid-template-columns: 1fr 420px; gap: 20px; align-items: start; }
+
+.param-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 18px; }
+.param-item { display: grid; grid-template-columns: 1fr 78px; gap: 10px; align-items: center; }
+.param-item label { font-size: 12.5px; color: var(--text-2); }
+.param-item label small { display: block; color: var(--text-3); font-size: 10.5px; }
+.param-item input { text-align: right; font-family: var(--mono); padding: 5px 9px; }
+
+.block-item { border: 1px solid var(--line); border-radius: var(--radius-sm); margin-bottom: 8px; overflow: hidden; }
+.block-head {
+  display: flex; align-items: center; gap: 10px; cursor: pointer;
+  background: var(--panel); padding: 10px 13px;
+}
+.block-head b { font-size: 13px; font-weight: 500; }
+.block-head span { font-size: 11px; color: var(--text-3); margin-left: auto; }
+.block-item textarea { border: none; border-top: 1px solid var(--line); border-radius: 0; display: none; }
+.block-item.open textarea { display: block; }
+
+.preview-panel { position: sticky; top: 90px; }
+.preview-panel pre {
+  background: var(--bg-2); border: 1px solid var(--line); border-radius: var(--radius-sm);
+  padding: 14px; font-family: var(--mono); font-size: 11.5px; line-height: 1.75;
+  color: var(--text-2); max-height: 460px; overflow: auto; white-space: pre-wrap; word-break: break-word;
+}
+.preview-panel h4 { display: flex; align-items: center; gap: 8px; }
+.preview-panel h4 em { font-style: normal; color: var(--text-3); font-size: 11px; margin-left: auto; }
+
+.notice {
+  font-size: 11.5px; color: var(--text-3); background: var(--panel);
+  border: 1px solid var(--line); border-left: 3px solid var(--accent-dim);
+  border-radius: var(--radius-sm); padding: 10px 13px; margin-top: 14px; line-height: 1.8;
+}
+
+.banner {
+  display: flex; align-items: center; gap: 10px;
+  background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius);
+  padding: 10px 16px; margin-bottom: 20px; font-size: 12.5px; color: var(--text-2);
+}
+.banner b { color: var(--accent); font-weight: 600; }
+.banner .spacer { flex: 1 1 auto; }
+
+/* 对局 ID：放最右、低饱和、点一下复制。
+   判定前后都显示同一个号，对着 data/reports/<gameId>.json 一眼能核实是哪一局。 */
+.gid-chip {
+  flex: 0 0 auto; font: inherit; cursor: pointer;
+  font-family: var(--mono, Consolas, "Courier New", monospace);
+  font-size: 11.5px; letter-spacing: .2px;
+  padding: 1px 8px; border-radius: 4px;
+  border: 1px solid var(--line); background: transparent; color: var(--text-3);
+  transition: .15s;
+}
+.gid-chip:hover { color: var(--text); border-color: var(--line-2); background: var(--panel-2); }
+.gid-chip.copied { color: var(--ok); border-color: rgba(111,158,111,.5); }
+
+/* ── 看 / 判 分界线 ──
+   同一位置两种身份：没判定时它是入口（点一下才调模型），判定过就是结果摘要 + 重判入口。
+   做成一条而不是藏进菜单 —— 用户盯着一屏数据时，最该知道的就是「这是谁给的、要不要再判」。 */
+.analyze-bar {
+  display: flex; align-items: center; gap: 10px;
+  background: var(--panel-2); border: 1px solid var(--line-2); border-radius: var(--radius);
+  padding: 9px 16px; margin: -10px 0 20px; font-size: 12.5px; color: var(--text-2);
+}
+.analyze-bar .spacer { flex: 1; }
+.analyze-bar .ab-dot {
+  width: 7px; height: 7px; border-radius: 50%; flex: 0 0 auto;
+  background: var(--warn);                 /* 未判定 → 黄，跟顶部状态点一套语义 */
+}
+.analyze-bar .ab-dot.ok { background: var(--ok); }
+/* 查别人拉到的陌生局：不是「待判定」（黄），是「不判定」（灰）—— 两件事别混 */
+.analyze-bar .ab-dot.off { background: var(--gray); }
+/* 战绩汇总里那句「其中 N 局来自客户端战绩」—— 来源说明，弱化处理 */
+.sum-extra { color: var(--text-3); font-size: 11.5px; }
+.analyze-bar .ab-text { min-width: 0; }
+
+/* ── 页脚：版本号 + 升级提示 ──
+   升级包只换 resources/app 里的代码，界面上几乎没有别的痕迹 ——
+   所以「升级到底成了没有」全靠这一行版本号说话。 */
+.app-foot {
+  flex: 0 0 auto;
+  height: 30px;
+  display: flex; align-items: center; gap: 8px;
+  padding: 0 20px;
+  border-top: 1px solid var(--line);
+  background: var(--bg-2);
+  font-size: 11.5px; color: var(--text-3);
+}
+.app-foot .spacer { flex: 1; }
+.app-foot .foot-name { color: var(--text-2); }
+.app-foot .foot-ver {
+  font-family: var(--mono); font-size: 11px;
+  color: var(--accent); background: var(--accent-soft);
+  border: 1px solid var(--accent-dim); border-radius: 4px;
+  padding: 0 6px;
+}
+.app-foot .foot-sep { color: var(--line-2); }
+.app-foot .foot-up {
+  color: var(--accent); cursor: pointer;
+  border-bottom: 1px dashed var(--accent-dim);
+}
+
+/* ── 昵称按阵营着色：我方绿 / 敌方红 ──
+   界面上只要出现召唤师名字，就该一眼看出是敌是友 —— 评分表、时间轴、
+   历史榜、播报稿，以及模型写的长文里点到的名字，都走这一个类。
+   视角丢失（myTeamId 为 null）时 data-side 为空，此时谁都不上色 ——
+   宁可全灰，也不能把 10 个人全染成「敌方红」骗人。 */
+.nm[data-side="my"]    { color: var(--side-my); }
+.nm[data-side="enemy"] { color: var(--side-enemy); }
+
+/* ── 对局详情里的我方胜负 ──
+   详情页（未判定）也要看得到，因为胜负是客观数据、不依赖模型判定。
+   绿 = 我方胜 / 红 = 我方负 —— 跟首页列表「结果」列同一套语义。 */
+.res-badge {
+  flex: 0 0 auto;
+  font-size: 12px; font-weight: 600; letter-spacing: .5px;
+  padding: 1px 9px; border-radius: 4px;
+  border: 1px solid var(--line-2); background: transparent; color: var(--text-3);
+}
+.res-badge.win  { color: var(--ok);     border-color: rgba(111,158,111,.5);  background: rgba(111,158,111,.12); }
+.res-badge.lose { color: var(--danger); border-color: rgba(184,92,92,.45);   background: rgba(184,92,92,.12); }

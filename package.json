@@ -1,0 +1,26 @@
+{
+  "name": "blamebox",
+  "version": "1.2.7",
+  "private": true,
+  "description": "LOL背锅侠 —— 极地大乱斗赛后玩家角色判定（运行时零依赖）",
+  "license": "GPL-3.0-only",
+  "type": "module",
+  "main": "desktop/main.cjs",
+  "scripts": {
+    "start": "node server/server.mjs",
+    "app": "node tools/build-desktop.mjs --dev",
+    "icon": "node tools/make-icon.mjs",
+    "check": "node tools/check-identifiers.mjs",
+    "check:api": "node tools/check-api-guard.mjs",
+    "check:index": "node tools/check-index-guard.mjs",
+    "check:judge": "node tools/check-judge-progress.mjs",
+    "check:pack": "node tools/check-update-pack.mjs",
+    "smoke": "node tools/ui-smoke.mjs",
+    "pack:desktop": "node tools/build-desktop.mjs",
+    "pack:update": "node tools/build-desktop.mjs --update"
+  },
+  "devDependencies": {
+    "esbuild": "^0.25.0",
+    "postject": "^1.0.0-alpha.6"
+  }
+}

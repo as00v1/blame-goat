@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BlameGoat · LOL背锅侠 — 赛后战报</title>
+<!-- 只许加载本服务的资源：界面是有外链图片 / 脚本注入面的（英雄图标、模型返回的文本），
+     收紧这一层等于把「外送数据」和「外链执行」两条路一起堵上。
+     内联 style / 内联事件（图标占位用的 onerror）必须放行 —— 那是本项目自己的写法。 -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; connect-src 'self'; font-src 'self' data:">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="app">
+
+  <header class="topbar">
+    <button class="btn sm ghost hidden" id="btnBack" title="返回上一层">← 返回</button>
+    <div class="brand"><b>BlameGoat</b><span>LOL背锅侠 · 赛后战报</span></div>
+    <div class="spacer"></div>
+    <div class="client-chip">
+      <span class="dot off" id="clientDot"></span>
+      <span id="clientText">未检测到客户端</span>
+      <span class="port" id="clientPort">—</span>
+    </div>
+  </header>
+
+  <main class="stage">
+
+    <!-- ── 首页：当前登录账号的战绩 ──
+         一进来就把「当前账号的战绩」铺在面前，点一行看战报 ——
+         不再让人先点按钮才看到东西。等待对局的状态压缩成一行，不再占半屏。 -->
+    <section class="page page-idle active" id="page-idle">
+      <div class="home-head">
+        <div class="home-meta">
+          <span class="dot off" id="homeDot"></span>
+          <span class="home-title" id="homeTitle">战绩</span>
+          <!-- 账号切换：默认跟着当前登录走；客户端没开就落在最后一次登录的那个 -->
+          <span class="acct-box" id="acctBox">
+            <span class="acct-label">查看</span>
+            <select id="acctSelect" title="选择要查看的本机账号"></select>
+          </span>
+          <span class="acct-note hidden" id="acctNote"></span>
+          <span class="acct-note hidden" id="searchNote"></span>
+          <button class="btn sm ghost hidden" id="btnExitSearch" title="回到当前账号的战绩">退出查询</button>
+          <span class="sep">|</span>
+          <span>登录 <b id="metaClient">未连接</b></span>
+          <span class="sep">·</span>
+          <span>端口 <b id="metaPort">—</b></span>
+          <span class="sep">·</span>
+          <span>阶段 <b id="metaPhase">Idle</b></span>
+          <span class="sep">·</span>
+          <span>模式 <b id="metaMode">—</b></span>
+        </div>
+        <div class="spacer"></div>
+        <!-- 按昵称 / puuid 查战绩。只能查到**本机客户端见过的人** ——
+             客户端本身不提供「按名字查陌生人」（v1 只吃 gameName#tagLine、中文名 422，
+             v2 连 name 参数都不收），所以这里如实说明范围，不假装能查全网。 -->
+        <div class="search-box" id="searchBox">
+          <input id="searchInput" type="search" placeholder="搜索召唤师昵称" title="搜索本机客户端缓存里出现过的召唤师">
+          <button class="btn sm" id="btnSearch" title="在本机名录里查">搜索</button>
+        </div>
+        <!-- 最近搜过：省得每次重打一遍昵称。点胶囊直接进那个人的战绩。 -->
+        <div class="search-hist hidden" id="searchHist"></div>
+        <button class="btn sm" id="btnHomeRefresh">刷新</button>
+      </div>
+
+      <div class="home-sub">
+        <span class="mh-sum" id="homeSum">正在读取当前账号战绩…</span>
+        <span class="home-hint">已分析过的局直接读本地战报，不重复调用模型</span>
+      </div>
+
+      <div class="mh-head">
+        <span>时间</span><span>模式</span><span>英雄</span><span>K / D / A</span><span>输出</span><span>承伤</span><span>结果</span><span>状态</span><span></span>
+      </div>
+      <div id="homeMatchList" class="scroll-y mh-list home-list"></div>
+
+      <div class="btn-row" style="margin-top:18px">
+        <button class="btn primary" id="btnLive">读取上一局战报</button>
+        <button class="btn ghost" id="btnSimulate">演示一局</button>
+        <button class="btn ghost" id="btnScan">探测客户端</button>
+      </div>
+
+      <div class="idle-links">
+        <button class="link-btn" id="btnSettings">设置</button>
+        <span class="dot-sep">·</span>
+        <button class="link-btn" id="btnPrompt">提示词</button>
+      </div>
+
+      <div class="idle-hint" id="serverHint">正在连接本地服务…</div>
+    </section>
+
+    <!-- ── 分析中 ── -->
+    <section class="page page-analyzing" id="page-analyzing">
+      <div class="analyzing-head">正在生成战报</div>
+      <div class="steps" id="steps"></div>
+      <div class="progress-track"><div class="progress-bar" id="progressBar"></div></div>
+      <!-- 判定真进度：服务端走 SSE 推 judging 事件（阶段 / 已用秒 / 已输出字数）。
+           离线演示没有服务端，这一行整块收起，只留上面那四步动画。 -->
+      <div class="judge-status hidden" id="judgeStatus">
+        <span class="judge-dot"></span>
+        <span class="judge-text" id="judgeText"></span>
+        <span class="judge-meta" id="judgeMeta"></span>
+      </div>
+    </section>
+
+    <!-- ── 战报（常驻） ── -->
+    <section class="page page-report" id="page-report">
+      <!-- 战绩列表只留在首页一份。这里再挂一个「战绩」页签是重复展示，
+           点进来看到的和首页一模一样，还多一次入口要选。 -->
+      <nav class="tabs" id="tabs">
+        <button class="tab active" data-tab="report">战报</button>
+        <button class="tab" data-tab="cast">播报</button>
+        <button class="tab" data-tab="history">历史</button>
+      </nav>
+
+      <!-- 战报 -->
+      <div class="pane active" data-pane="report">
+        <!-- 我方胜负：详情态也要看得见 —— 胜负是客观数据，不依赖判定。
+             认不出我方阵营（myTeamId 为 null）时整枚收起，不猜。 -->
+        <div class="banner">
+          <span class="dot" id="srcDot"></span>
+          <span class="res-badge hidden" id="resBadge"></span>
+          <span id="srcText">—</span>
+          <!-- 对局 ID：判定前后同一个号，对着 data/reports/<gameId>.json 就能核实是哪一局。
+               复制靠点击，不占按钮位。 -->
+          <span class="spacer"></span>
+          <button class="gid-chip hidden" id="gidChip" title="点击复制对局 ID"></button>
+        </div>
+
+        <!-- 看 ↔ 判的分界线：详情不花 token，判定才花，由这一颗按钮决定 -->
+        <div class="analyze-bar" id="analyzeBar">
+          <span class="ab-dot" id="abDot"></span>
+          <span class="ab-text" id="analyzeHint">—</span>
+          <span class="spacer"></span>
+          <button class="btn sm primary" id="btnDoAnalyze">开始分析</button>
+        </div>
+
+        <!-- 对局评价：结论 → 三维分类卡 → 局势总览。
+             层次是「先给一句话，再按 阵容 / 海克斯 / 出装 分类说，最后看长文」——
+             分类卡来自 teamInsight，随机分配的东西不记在任何个人头上。 -->
+        <div class="verdict-box">
+          <h2 id="verdict">—</h2>
+        </div>
+
+        <div class="team-box hidden" id="teamBox">
+          <div class="ti-item" id="tiCompWrap" data-tone="comp"><h5>阵容</h5><p id="tiComp">—</p></div>
+          <div class="ti-item" id="tiAugWrap" data-tone="aug"><h5>海克斯</h5><p id="tiAug">—</p></div>
+          <div class="ti-item" id="tiItemWrap" data-tone="item"><h5>出装</h5><p id="tiItem">—</p></div>
+        </div>
+
+        <div id="insightWrap" class="hidden">
+          <div class="section-title">局势总览</div>
+          <p id="insight" class="insight-text">—</p>
+        </div>
+
+        <!-- 评分表：按对局实况分我方 / 敌方，每人一行。
+             一行之内把「他带了什么、打了多少、我们怎么判」摆齐 ——
+             左边是客观数据（K/D/A、海克斯、出装），右边是判定结果（评分、头衔）。
+             点行展开详细理由与证据，不展开时不占地方。 -->
+        <div class="sb-toolbar">
+          <span class="sb-toolbar-label">分类</span>
+          <div class="seg-ctrl" id="groupBy">
+            <button class="seg-btn active" data-group="side">按阵营</button>
+            <button class="seg-btn" data-group="label">按结论</button>
+            <button class="seg-btn" data-group="role">按定位</button>
+          </div>
+          <span class="sb-toolbar-hint" id="groupHint"></span>
+        </div>
+        <div id="sbGroups"></div>
+
+        <div class="section-title">时间轴 · 原样搬运<span class="count" id="tlCount"></span><span class="tl-legend"><i data-side="my"></i>我方<i data-side="enemy"></i>敌方</span></div>
+        <div id="timeline" class="tl-list"></div>
+      </div>
+
+      <!-- 播报 -->
+      <div class="pane" data-pane="cast">
+        <div class="cast-grid">
+          <div>
+            <div class="cast-text" id="castText">—</div>
+            <div class="mini-panel" style="margin-top:14px">
+              <h4>播放波形</h4>
+              <div class="wave playing" id="wave"></div>
+            </div>
+          </div>
+          <div class="cast-side">
+            <div class="mini-panel">
+              <h4>语气档位</h4>
+              <div class="tone-group" id="tones"></div>
+            </div>
+            <div class="mini-panel">
+              <h4>输出通道</h4>
+              <div class="chan" id="chan"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 历史 -->
+      <div class="pane" data-pane="history">
+        <div class="hist-head">
+          <span>玩家</span><span>累计场次</span><span>标签分布</span><span>最近对局</span>
+        </div>
+        <div id="historyList"></div>
+      </div>
+
+    </section>
+
+    <!-- ── 配置（设置 / 提示词） ── 全局配置，从主页进入，不挂在战报详情里 -->
+    <section class="page page-config" id="page-config">
+      <nav class="tabs" id="cfgTabs">
+        <button class="tab active" data-ctab="settings">设置</button>
+        <button class="tab" data-ctab="prompt">提示词</button>
+      </nav>
+
+      <!-- 设置 -->
+      <div class="pane active" data-pane="settings">
+        <div class="form" id="settingsForm">
+          <div class="form-row">
+            <label for="setKey">DeepSeek API Key</label>
+            <div class="ctrl">
+              <input type="password" id="setKey" placeholder="sk-…（留空则走本地兜底判定）">
+              <button class="btn sm" id="btnToggleKey">显示</button>
+              <button class="btn sm primary" id="btnSaveKey">保存</button>
+            </div>
+            <div class="desc" id="keyDesc">未配置 · 将走本地兜底判定</div>
+          </div>
+          <div class="form-row">
+            <label for="setTone">默认语气</label>
+            <div class="ctrl">
+              <select id="setTone">
+                <option value="mild">温和</option>
+                <option value="normal" selected>标准</option>
+                <option value="savage">毒舌</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row">
+            <label for="setScope">播报范围</label>
+            <div class="ctrl">
+              <select id="setScope">
+                <option value="ally" selected>只播自己队</option>
+                <option value="all">全场 10 人</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row">
+            <label for="setAnon">匿名化</label>
+            <div class="ctrl">
+              <span class="switch"><input type="checkbox" id="setAnon" checked><i></i></span>
+              <span style="font-size:12px;color:var(--text-3)">发给模型前用英雄名 / p1-p10 替换真实昵称</span>
+            </div>
+          </div>
+          <div class="form-row">
+            <label for="setAutoAnalyze">赛后自动分析</label>
+            <div class="ctrl">
+              <span class="switch"><input type="checkbox" id="setAutoAnalyze"><i></i></span>
+              <span style="font-size:12px;color:var(--text-3)">默认关：打完只登记、不判定。判定会调用 DeepSeek，由你点「开始分析」</span>
+            </div>
+          </div>
+          <div class="form-row">
+            <label for="setAuto">赛后自动弹出</label>
+            <div class="ctrl">
+              <span class="switch"><input type="checkbox" id="setAuto" checked><i></i></span>
+            </div>
+          </div>
+          <div class="form-row">
+            <label for="setTts">语音播报</label>
+            <div class="ctrl">
+              <span class="switch"><input type="checkbox" id="setTts"><i></i></span>
+              <span style="font-size:12px;color:var(--text-3)">TTS → 虚拟声卡 → YY 频道</span>
+            </div>
+          </div>
+        </div>
+        <div class="notice" style="max-width:620px">
+          合规边界：纯本地只读，不做内存读取 / 注入 / 改包；不做自动接受、自动点赞、模拟键鼠。
+          数据全程本地不上传，只有匿名化后的对局数据会发给 DeepSeek。
+        </div>
+      </div>
+
+      <!-- 提示词 -->
+      <div class="pane" data-pane="prompt">
+        <div class="prompt-grid">
+          <div>
+            <div class="section-title">参数层</div>
+            <div class="param-grid" id="paramGrid"></div>
+
+            <div class="section-title">区块层</div>
+            <div id="blockList"></div>
+
+            <div class="notice">
+              约束方式：输出行为约束全部写在提示词里，模型自律执行 —— 不用代码层正则 / 关键词黑名单，
+              避免「事后用代码猜模型表达」。改规则只改提示词，不必重新发版。<br>
+              保留的边界：结构化校验（JSON 可解析 / 字段齐全 / 枚举合法 / 分数 0-100 / 人数完整）仍由代码执行，那是解析必需。
+            </div>
+          </div>
+
+          <div class="preview-panel">
+            <div class="mini-panel">
+              <h4>预览层 <em id="previewMeta"></em></h4>
+              <pre id="previewText"></pre>
+            </div>
+            <div class="btn-row" style="margin-top:14px">
+              <button class="btn sm" id="btnResetPrompt">恢复默认</button>
+              <button class="btn sm primary" id="btnSavePrompt">保存</button>
+              <span style="font-size:11.5px;color:var(--text-3);align-self:center" id="saveHint"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+  </main>
+
+  <!-- 页脚：版本号常显，升级完在这里说一声。
+       升级包只换代码不碰数据，用户肉眼能看到的「升级确实发生了」就是这行。 -->
+  <footer class="app-foot">
+    <span class="foot-name">LOL背锅侠</span>
+    <span class="foot-ver" id="verText">v—</span>
+    <span class="foot-sep">·</span>
+    <span class="foot-hint" id="footHint">数据在本机，不上传</span>
+    <span class="spacer"></span>
+    <span class="foot-up hidden" id="updNote" title="点一下收起"></span>
+  </footer>
+</div>
+
+<script src="data.js"></script>
+<script src="prompt.js"></script>
+<script src="api.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

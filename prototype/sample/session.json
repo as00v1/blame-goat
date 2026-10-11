@@ -1,0 +1,347 @@
+{
+  "gameClient": {
+    "observerServerIp": "",
+    "observerServerPort": 0,
+    "running": false,
+    "serverIp": "gpp-tj101-2.lol.qq.com",
+    "serverPort": 34545,
+    "visible": false
+  },
+  "gameData": {
+    "gameId": 401141430317,
+    "gameName": "",
+    "isCustomGame": false,
+    "playerChampionSelections": [
+      {
+        "championId": 48,
+        "puuid": "00000000-0000-4000-8000-000000000001",
+        "selectedSkinIndex": 0,
+        "spell1Id": 4,
+        "spell2Id": 32
+      },
+      {
+        "championId": 136,
+        "puuid": "00000000-0000-4000-8000-000000000002",
+        "selectedSkinIndex": 21,
+        "spell1Id": 32,
+        "spell2Id": 4
+      },
+      {
+        "championId": 235,
+        "puuid": "00000000-0000-4000-8000-000000000003",
+        "selectedSkinIndex": 16,
+        "spell1Id": 4,
+        "spell2Id": 6
+      },
+      {
+        "championId": 134,
+        "puuid": "00000000-0000-4000-8000-000000000004",
+        "selectedSkinIndex": 3,
+        "spell1Id": 4,
+        "spell2Id": 6
+      },
+      {
+        "championId": 62,
+        "puuid": "00000000-0000-4000-8000-000000000005",
+        "selectedSkinIndex": 0,
+        "spell1Id": 4,
+        "spell2Id": 32
+      },
+      {
+        "championId": 41,
+        "puuid": "00000000-0000-4000-8000-000000000006",
+        "selectedSkinIndex": 8,
+        "spell1Id": 32,
+        "spell2Id": 4
+      },
+      {
+        "championId": 141,
+        "puuid": "00000000-0000-4000-8000-000000000007",
+        "selectedSkinIndex": 12,
+        "spell1Id": 32,
+        "spell2Id": 4
+      },
+      {
+        "championId": 30,
+        "puuid": "00000000-0000-4000-8000-000000000008",
+        "selectedSkinIndex": 4,
+        "spell1Id": 4,
+        "spell2Id": 32
+      },
+      {
+        "championId": 54,
+        "puuid": "00000000-0000-4000-8000-000000000009",
+        "selectedSkinIndex": 12,
+        "spell1Id": 4,
+        "spell2Id": 32
+      },
+      {
+        "championId": 517,
+        "puuid": "00000000-0000-4000-8000-000000000010",
+        "selectedSkinIndex": 22,
+        "spell1Id": 4,
+        "spell2Id": 32
+      }
+    ],
+    "queue": {
+      "allowablePremadeSizes": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "areFreeChampionsAllowed": true,
+      "assetMutator": "",
+      "category": "PvP",
+      "championsRequiredToPlay": 16,
+      "description": "海克斯大乱斗 ",
+      "detailedDescription": "",
+      "gameMode": "KIWI",
+      "gameTypeConfig": {
+        "advancedLearningQuests": false,
+        "allowTrades": false,
+        "banMode": "",
+        "banTimerDuration": 0,
+        "battleBoost": false,
+        "crossTeamChampionPool": false,
+        "deathMatch": false,
+        "doNotRemove": false,
+        "duplicatePick": false,
+        "exclusivePick": false,
+        "id": 21,
+        "learningQuests": false,
+        "mainPickTimerDuration": 0,
+        "maxAllowableBans": 0,
+        "name": "",
+        "onboardCoopBeginner": false,
+        "pickMode": "",
+        "postPickTimerDuration": 0,
+        "reroll": false,
+        "teamChampionPool": false
+      },
+      "id": 2400,
+      "isBotHonoringAllowed": false,
+      "isCustom": false,
+      "isRanked": false,
+      "isTeamBuilderManaged": true,
+      "lastToggledOffTime": 0,
+      "lastToggledOnTime": 0,
+      "mapId": 12,
+      "maximumParticipantListSize": 5,
+      "minLevel": 1,
+      "minimumParticipantListSize": 0,
+      "name": "海克斯大乱斗 ",
+      "numPlayersPerTeam": 5,
+      "pickMode": "AllRandomPickStrategy",
+      "queueAvailability": "Available",
+      "queueRewards": {
+        "isChampionPointsEnabled": true,
+        "isIpEnabled": true,
+        "isXpEnabled": true,
+        "partySizeIpRewards": []
+      },
+      "removalFromGameAllowed": false,
+      "removalFromGameDelayMinutes": 0,
+      "shortName": "海克斯大乱斗 ",
+      "showPositionSelector": false,
+      "spectatorEnabled": true,
+      "type": "KIWI"
+    },
+    "spectatorsAllowed": false,
+    "teamOne": [
+      {
+        "championId": 62,
+        "lastSelectedSkinIndex": 0,
+        "profileIconId": 4881,
+        "puuid": "00000000-0000-4000-8000-000000000004",
+        "selectedPosition": "NONE",
+        "selectedRole": "NONE.NONE.NONE.UNSELECTED",
+        "summonerId": 90000000004,
+        "summonerInternalName": "路人丁",
+        "summonerName": "路人丁",
+        "teamOwner": false,
+        "teamParticipantId": 4
+      },
+      {
+        "championId": 134,
+        "lastSelectedSkinIndex": 0,
+        "profileIconId": 4247,
+        "puuid": "00000000-0000-4000-8000-000000000003",
+        "selectedPosition": "NONE",
+        "selectedRole": "NONE.NONE.NONE.UNSELECTED",
+        "summonerId": 90000000003,
+        "summonerInternalName": "路人丙",
+        "summonerName": "路人丙",
+        "teamOwner": false,
+        "teamParticipantId": 3
+      },
+      {
+        "championId": 136,
+        "lastSelectedSkinIndex": 0,
+        "profileIconId": 3583,
+        "puuid": "00000000-0000-4000-8000-000000000001",
+        "selectedPosition": "NONE",
+        "selectedRole": "NONE.NONE.NONE.UNSELECTED",
+        "summonerId": 90000000001,
+        "summonerInternalName": "路人甲",
+        "summonerName": "路人甲",
+        "teamOwner": false,
+        "teamParticipantId": 1
+      },
+      {
+        "championId": 48,
+        "lastSelectedSkinIndex": 0,
+        "profileIconId": 782,
+        "puuid": "00000000-0000-4000-8000-000000000001",
+        "selectedPosition": "NONE",
+        "selectedRole": "NONE.NONE.NONE.UNSELECTED",
+        "summonerId": 90000000001,
+        "summonerInternalName": "路人甲",
+        "summonerName": "路人甲",
+        "teamOwner": false,
+        "teamParticipantId": 1
+      },
+      {
+        "championId": 235,
+        "lastSelectedSkinIndex": 0,
+        "profileIconId": 1213,
+        "puuid": "00000000-0000-4000-8000-000000000002",
+        "selectedPosition": "NONE",
+        "selectedRole": "NONE.NONE.NONE.UNSELECTED",
+        "summonerId": 90000000002,
+        "summonerInternalName": "路人乙",
+        "summonerName": "路人乙",
+        "teamOwner": false,
+        "teamParticipantId": 2
+      }
+    ],
+    "teamTwo": [
+      {
+        "championId": 54,
+        "lastSelectedSkinIndex": 0,
+        "profileIconId": 7221,
+        "puuid": "00000000-0000-4000-8000-000000000005",
+        "selectedPosition": "NONE",
+        "selectedRole": "NONE.NONE.NONE.UNSELECTED",
+        "summonerId": 90000000005,
+        "summonerInternalName": "路人戊",
+        "summonerName": "路人戊",
+        "teamOwner": false,
+        "teamParticipantId": 5
+      },
+      {
+        "championId": 517,
+        "lastSelectedSkinIndex": 0,
+        "profileIconId": 7159,
+        "puuid": "00000000-0000-4000-8000-000000000005",
+        "selectedPosition": "NONE",
+        "selectedRole": "NONE.NONE.NONE.UNSELECTED",
+        "summonerId": 90000000005,
+        "summonerInternalName": "路人戊",
+        "summonerName": "路人戊",
+        "teamOwner": false,
+        "teamParticipantId": 5
+      },
+      {
+        "championId": 41,
+        "lastSelectedSkinIndex": 0,
+        "profileIconId": 1219,
+        "puuid": "00000000-0000-4000-8000-000000000005",
+        "selectedPosition": "NONE",
+        "selectedRole": "NONE.NONE.NONE.UNSELECTED",
+        "summonerId": 90000000005,
+        "summonerInternalName": "路人戊",
+        "summonerName": "路人戊",
+        "teamOwner": false,
+        "teamParticipantId": 5
+      },
+      {
+        "championId": 141,
+        "lastSelectedSkinIndex": 0,
+        "profileIconId": 1211,
+        "puuid": "00000000-0000-4000-8000-000000000005",
+        "selectedPosition": "NONE",
+        "selectedRole": "NONE.NONE.NONE.UNSELECTED",
+        "summonerId": 90000000005,
+        "summonerInternalName": "路人戊",
+        "summonerName": "路人戊",
+        "teamOwner": false,
+        "teamParticipantId": 5
+      },
+      {
+        "championId": 30,
+        "lastSelectedSkinIndex": 0,
+        "profileIconId": 7210,
+        "puuid": "00000000-0000-4000-8000-000000000005",
+        "selectedPosition": "NONE",
+        "selectedRole": "NONE.NONE.NONE.UNSELECTED",
+        "summonerId": 90000000005,
+        "summonerInternalName": "路人戊",
+        "summonerName": "路人戊",
+        "teamOwner": false,
+        "teamParticipantId": 5
+      }
+    ]
+  },
+  "gameDodge": {
+    "dodgeIds": [],
+    "phase": "None",
+    "state": "Invalid"
+  },
+  "map": {
+    "assets": {
+      "champ-select-background-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/ARAM/sound/music-cs-allrandom-howlingabyss.ogg",
+      "champ-select-banphase-background-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/ARAM/sound/music-cs-allrandom-banphase-howlingabyss.ogg",
+      "champ-select-flyout-background": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/ARAM/img/champ-select-flyout-background.png",
+      "game-select-icon-active": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/ARAM/img/game-select-icon-active.png",
+      "game-select-icon-active-video": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/ARAM/video/game-select-icon-active.webm",
+      "game-select-icon-default": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/ARAM/img/game-select-icon-default.png",
+      "game-select-icon-disabled": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/ARAM/img/game-select-icon-disabled.png",
+      "game-select-icon-hover": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/ARAM/img/game-select-icon-hover.png",
+      "game-select-icon-intro-video": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/ARAM/video/game-select-icon-intro.webm",
+      "gameflow-background": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/ARAM/img/gameflow-background.jpg",
+      "gameflow-background-dark": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/ARAM/img/gameflow-background-dark.jpg",
+      "gameselect-button-hover-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/sound/sfx-gameselect-button-hover.ogg",
+      "icon-defeat": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/ARAM/img/icon-defeat.png",
+      "icon-defeat-v2": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/ARAM/img/icon-defeat-v2.png",
+      "icon-defeat-video": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/ARAM/video/icon-defeat.webm",
+      "icon-empty": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/ARAM/img/icon-empty.png",
+      "icon-hover": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/ARAM/img/icon-hover.png",
+      "icon-leaver": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/ARAM/img/icon-leaver.png",
+      "icon-leaver-v2": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/ARAM/img/icon-leaver-v2.png",
+      "icon-loss-forgiven-v2": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/ARAM/img/icon-loss-forgiven-v2.png",
+      "icon-v2": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/ARAM/img/icon-v2.png",
+      "icon-victory": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/ARAM/img/icon-victory.png",
+      "icon-victory-video": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/ARAM/video/icon-victory.webm",
+      "music-inqueue-loop-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/ARAM/sound/music-inqueue-loop-howlingabyss.ogg",
+      "parties-background": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/ARAM/img/parties-background.jpg",
+      "postgame-ambience-loop-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/ARAM/sound/sfx-ambience-loop-howlingabyss.ogg",
+      "ready-check-background": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/ARAM/img/ready-check-background.png",
+      "ready-check-background-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/ARAM/sound/sfx-readycheck-ha-portal.ogg",
+      "sfx-ambience-pregame-loop-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/ARAM/sound/sfx-ambience-loop-howlingabyss.ogg",
+      "social-icon-leaver": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/ARAM/img/social-icon-leaver.png",
+      "social-icon-victory": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/ARAM/img/social-icon-victory.png",
+      "tutorial-bg": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/GameModeCommon/img/tutorial-bg.png"
+    },
+    "categorizedContentBundles": {},
+    "description": "嚎哭深渊是一个无底裂隙，位于弗雷尔卓德最为寒冷、最为残酷的部分。传说在很久以前，一场宏大的战役就发生在横跨这道天堑的一座狭窄桥梁上。没有人记得谁在此战斗，为何而战斗，但有传言说，如果你仔细聆听风声的话，仍然可以听见那些葬身于深渊之中的败亡者们在嚎哭不停。",
+    "gameMode": "KIWI",
+    "gameModeName": "极地大乱斗",
+    "gameModeShortName": "极地大乱斗",
+    "gameMutator": "",
+    "id": 12,
+    "isRGM": false,
+    "mapStringId": "HA",
+    "name": "随机地图",
+    "perPositionDisallowedSummonerSpells": {},
+    "perPositionRequiredSummonerSpells": {},
+    "platformId": "",
+    "platformName": "",
+    "properties": {
+      "suppressRunesMasteriesPerks": true
+    }
+  },
+  "phase": "PreEndOfGame"
+}

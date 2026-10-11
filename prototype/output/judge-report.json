@@ -1,0 +1,3405 @@
+{
+  "generatedAt": "2026-10-10T12:41:58.041Z",
+  "tone": "normal",
+  "source": "deepseek",
+  "model": "deepseek-v4-flash",
+  "usage": {
+    "prompt_tokens": 23549,
+    "completion_tokens": 1310,
+    "total_tokens": 24859,
+    "prompt_tokens_details": {
+      "cached_tokens": 23296
+    },
+    "prompt_cache_hit_tokens": 23296,
+    "prompt_cache_miss_tokens": 253
+  },
+  "errors": [],
+  "elapsedMs": 6426,
+  "dataset": {
+    "match": {
+      "gameId": 401141430317,
+      "mapId": 12,
+      "mapName": "嚎哭深渊",
+      "queueId": 2400,
+      "queueName": "海克斯大乱斗",
+      "mode": "海克斯大乱斗",
+      "gameMode": "KIWI",
+      "gameVersion": "16.20.824.8524",
+      "durationSec": 1750,
+      "durationText": "29:10",
+      "myTeamId": 200,
+      "myResult": "LOSE"
+    },
+    "teams": [
+      {
+        "teamId": 200,
+        "isWinningTeam": false,
+        "isMyTeam": true,
+        "teamKills": 86
+      },
+      {
+        "teamId": 100,
+        "isWinningTeam": true,
+        "isMyTeam": false,
+        "teamKills": 95
+      }
+    ],
+    "players": [
+      {
+        "pid": "p6",
+        "participantId": 6,
+        "teamId": 200,
+        "isMyTeam": true,
+        "champion": "普朗克",
+        "championTitle": "海洋之灾",
+        "championIcon": "/lol-game-data/assets/v1/champion-icons/41.png",
+        "championType": "FIGHTER",
+        "championTags": [
+          "fighter"
+        ],
+        "level": 646,
+        "runes": [],
+        "items": [
+          {
+            "id": 3165,
+            "name": "莫雷洛秘典",
+            "icon": "/lol-game-data/assets/ASSETS/Items/Icons2D/3165_Mage_T3_Morellonomicon.png"
+          },
+          {
+            "id": 3118,
+            "name": "残疫",
+            "icon": "/lol-game-data/assets/ASSETS/Items/Icons2D/3118_Malignance.png"
+          },
+          {
+            "id": 3031,
+            "name": "无尽之刃",
+            "icon": "/lol-game-data/assets/ASSETS/Items/Icons2D/3031_Marksman_T3_InfinityEdge.png"
+          },
+          {
+            "id": 6676,
+            "name": "收集者",
+            "icon": "/lol-game-data/assets/ASSETS/Items/Icons2D/6676_Marksman_T3_TheCollector.png"
+          },
+          {
+            "id": 3033,
+            "name": "凡性的提醒",
+            "icon": "/lol-game-data/assets/ASSETS/Items/Icons2D/3033_Marksman_T3_MortalReminder.png"
+          },
+          {
+            "id": 6695,
+            "name": "巨蛇之牙",
+            "icon": "/lol-game-data/assets/ASSETS/Items/Icons2D/6695_Assassin_T3_SerpentsFang.png"
+          }
+        ],
+        "augments": [
+          {
+            "id": 1356,
+            "name": "暴击飞弹",
+            "icon": "/lol-game-data/assets/ASSETS/UX/Kiwi/Augments/Icons/CriticalMissile_small.png",
+            "rarity": "kGold",
+            "rarityCn": "金"
+          },
+          {
+            "id": 1336,
+            "name": "升级：无尽之刃",
+            "icon": "/lol-game-data/assets/ASSETS/UX/Kiwi/Augments/Icons/UpgradeIE_small.png",
+            "rarity": "kGold",
+            "rarityCn": "金"
+          },
+          {
+            "id": 1062,
+            "name": "全能龙魂",
+            "icon": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/OmniSoul_small.png",
+            "rarity": "kPrismatic",
+            "rarityCn": "棱彩"
+          },
+          {
+            "id": 1333,
+            "name": "逃跑计划",
+            "icon": "/lol-game-data/assets/ASSETS/UX/Kiwi/Augments/Icons/EscapePlan_small.png",
+            "rarity": "kSilver",
+            "rarityCn": "银"
+          }
+        ],
+        "kills": 19,
+        "deaths": 16,
+        "assists": 25,
+        "cs": 105,
+        "gold": 30475,
+        "damageDealt": 58689,
+        "damageTaken": 69145,
+        "damageMitigated": 59207,
+        "healing": 21117,
+        "shielding": 0,
+        "turretDamage": 1808,
+        "ccTime": 275,
+        "timeDead": 546,
+        "largestMultiKill": 2,
+        "killParticipation": 0.51,
+        "perMinute": {
+          "damageDealt": 2012.2,
+          "damageTaken": 2370.7,
+          "gold": 1044.9,
+          "cs": 3.6,
+          "healing": 724,
+          "shielding": 0,
+          "mitigated": 2030,
+          "turretDamage": 62,
+          "timeDead": 18.7
+        },
+        "deathTimes": [
+          "03:22",
+          "05:06",
+          "06:08",
+          "07:35",
+          "10:41",
+          "11:51",
+          "13:37",
+          "15:07",
+          "15:56",
+          "17:38",
+          "19:29",
+          "21:37",
+          "23:08",
+          "24:14",
+          "26:21",
+          "28:22"
+        ]
+      },
+      {
+        "pid": "p7",
+        "participantId": 7,
+        "teamId": 200,
+        "isMyTeam": true,
+        "champion": "凯隐",
+        "championTitle": "影流之镰",
+        "championIcon": "/lol-game-data/assets/v1/champion-icons/141.png",
+        "championType": "FIGHTER",
+        "championTags": [
+          "fighter",
+          "assassin"
+        ],
+        "level": 617,
+        "runes": [],
+        "items": [
+          {
+            "id": 126697,
+            "name": "狂妄",
+            "icon": "/lol-game-data/assets/ASSETS/Items/Icons2D/6697_Hubris.png"
+          },
+          {
+            "id": 3065,
+            "name": "振奋盔甲",
+            "icon": "/lol-game-data/assets/ASSETS/Items/Icons2D/3065_Tank_T3_SpiritVisage.png"
+          },
+          {
+            "id": 6692,
+            "name": "星蚀",
+            "icon": "/lol-game-data/assets/ASSETS/Items/Icons2D/6692_Assassin_T4_Eclipse.png"
+          },
+          {
+            "id": 6333,
+            "name": "死亡之舞",
+            "icon": "/lol-game-data/assets/ASSETS/Items/Icons2D/6333_Fighter_T3_DeathsDance.png"
+          },
+          {
+            "id": 2517,
+            "name": "无穷饥渴",
+            "icon": "/lol-game-data/assets/ASSETS/Items/Icons2D/2517_ADFighterOmnivamp.png"
+          },
+          {
+            "id": 6696,
+            "name": "公理圆弧",
+            "icon": "/lol-game-data/assets/ASSETS/Items/Icons2D/6696_AxiomArc.png"
+          }
+        ],
+        "augments": [
+          {
+            "id": 1326,
+            "name": "夜狩",
+            "icon": "/lol-game-data/assets/ASSETS/UX/Kiwi/Augments/Icons/Nightstalking_small.png",
+            "rarity": "kGold",
+            "rarityCn": "金"
+          },
+          {
+            "id": 1329,
+            "name": "史上最大雪球",
+            "icon": "/lol-game-data/assets/ASSETS/UX/Kiwi/Augments/Icons/BiggestSnowballEver_small.png",
+            "rarity": "kPrismatic",
+            "rarityCn": "棱彩"
+          },
+          {
+            "id": 1041,
+            "name": "歌利亚巨人",
+            "icon": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/Goliath_small.png",
+            "rarity": "kPrismatic",
+            "rarityCn": "棱彩"
+          },
+          {
+            "id": 1214,
+            "name": "旋转至胜",
+            "icon": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/SpinToWin_small.png",
+            "rarity": "kSilver",
+            "rarityCn": "银"
+          }
+        ],
+        "kills": 16,
+        "deaths": 21,
+        "assists": 33,
+        "cs": 73,
+        "gold": 28399,
+        "damageDealt": 78725,
+        "damageTaken": 119436,
+        "damageMitigated": 128868,
+        "healing": 50906,
+        "shielding": 0,
+        "turretDamage": 3028,
+        "ccTime": 262,
+        "timeDead": 603,
+        "largestMultiKill": 2,
+        "killParticipation": 0.57,
+        "perMinute": {
+          "damageDealt": 2699.1,
+          "damageTaken": 4094.9,
+          "gold": 973.7,
+          "cs": 2.5,
+          "healing": 1745.3,
+          "shielding": 0,
+          "mitigated": 4418.3,
+          "turretDamage": 103.8,
+          "timeDead": 20.7
+        },
+        "deathTimes": [
+          "00:47",
+          "01:34",
+          "02:42",
+          "03:35",
+          "05:15",
+          "06:34",
+          "07:06",
+          "08:13",
+          "10:34",
+          "11:16",
+          "13:28",
+          "14:48",
+          "15:46",
+          "17:27",
+          "18:18",
+          "19:42",
+          "23:29",
+          "24:29",
+          "26:07",
+          "28:01",
+          "28:57"
+        ]
+      },
+      {
+        "pid": "p8",
+        "participantId": 8,
+        "teamId": 200,
+        "isMyTeam": true,
+        "champion": "卡尔萨斯",
+        "championTitle": "死亡颂唱者",
+        "championIcon": "/lol-game-data/assets/v1/champion-icons/30.png",
+        "championType": "MAGE",
+        "championTags": [
+          "mage"
+        ],
+        "level": 318,
+        "runes": [],
+        "items": [
+          {
+            "id": 2503,
+            "name": "黯炎火炬",
+            "icon": "/lol-game-data/assets/ASSETS/Items/Icons2D/2503_BlackfireTorch64.png"
+          },
+          {
+            "id": 6653,
+            "name": "兰德里的折磨",
+            "icon": "/lol-game-data/assets/ASSETS/Items/Icons2D/6653_Mage_T4_LiandrysAnguish.png"
+          },
+          {
+            "id": 4645,
+            "name": "影焰",
+            "icon": "/lol-game-data/assets/ASSETS/Items/Icons2D/4645_Shadowflame.png"
+          },
+          {
+            "id": 3089,
+            "name": "灭世者的死亡之帽",
+            "icon": "/lol-game-data/assets/ASSETS/Items/Icons2D/3089_Mage_T3_Deathcap.png"
+          },
+          {
+            "id": 3135,
+            "name": "虚空之杖",
+            "icon": "/lol-game-data/assets/ASSETS/Items/Icons2D/3135_Mage_T3_VoidStaff.png"
+          },
+          {
+            "id": 6696,
+            "name": "公理圆弧",
+            "icon": "/lol-game-data/assets/ASSETS/Items/Icons2D/6696_AxiomArc.png"
+          }
+        ],
+        "augments": [
+          {
+            "id": 2128,
+            "name": "炽燃利息",
+            "icon": "/lol-game-data/assets/ASSETS/UX/Kiwi/Augments/Icons/BloodMoney2_small.png",
+            "rarity": "kGold",
+            "rarityCn": "金"
+          },
+          {
+            "id": 1384,
+            "name": "捐赠",
+            "icon": "/lol-game-data/assets/ASSETS/UX/Kiwi/Augments/Icons/Donation_small.png",
+            "rarity": "kGold",
+            "rarityCn": "金"
+          },
+          {
+            "id": 1030,
+            "name": "尤里卡",
+            "icon": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/Eureka_small.png",
+            "rarity": "kPrismatic",
+            "rarityCn": "棱彩"
+          },
+          {
+            "id": 1205,
+            "name": "物理转魔法",
+            "icon": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/ADAPt_small.png",
+            "rarity": "kSilver",
+            "rarityCn": "银"
+          }
+        ],
+        "kills": 24,
+        "deaths": 21,
+        "assists": 42,
+        "cs": 91,
+        "gold": 43829,
+        "damageDealt": 166226,
+        "damageTaken": 50052,
+        "damageMitigated": 20964,
+        "healing": 439,
+        "shielding": 0,
+        "turretDamage": 464,
+        "ccTime": 249,
+        "timeDead": 546,
+        "largestMultiKill": 4,
+        "killParticipation": 0.77,
+        "perMinute": {
+          "damageDealt": 5699.2,
+          "damageTaken": 1716.1,
+          "gold": 1502.7,
+          "cs": 3.1,
+          "healing": 15.1,
+          "shielding": 0,
+          "mitigated": 718.8,
+          "turretDamage": 15.9,
+          "timeDead": 18.7
+        },
+        "deathTimes": [
+          "00:54",
+          "01:32",
+          "02:07",
+          "02:43",
+          "03:19",
+          "03:58",
+          "04:48",
+          "05:23",
+          "06:28",
+          "07:18",
+          "08:04",
+          "08:53",
+          "09:40",
+          "10:35",
+          "11:22",
+          "13:21",
+          "14:54",
+          "17:13",
+          "19:07",
+          "24:48",
+          "26:53"
+        ]
+      },
+      {
+        "pid": "p9",
+        "participantId": 9,
+        "teamId": 200,
+        "isMyTeam": true,
+        "champion": "墨菲特",
+        "championTitle": "熔岩巨兽",
+        "championIcon": "/lol-game-data/assets/v1/champion-icons/54.png",
+        "championType": "TANK",
+        "championTags": [
+          "tank",
+          "mage"
+        ],
+        "level": 618,
+        "runes": [],
+        "items": [
+          {
+            "id": 3065,
+            "name": "振奋盔甲",
+            "icon": "/lol-game-data/assets/ASSETS/Items/Icons2D/3065_Tank_T3_SpiritVisage.png"
+          },
+          {
+            "id": 3121,
+            "name": "末日寒冬",
+            "icon": "/lol-game-data/assets/ASSETS/Items/Icons2D/3121_Fimbulwinter.png"
+          },
+          {
+            "id": 6664,
+            "name": "璀璨回响",
+            "icon": "/lol-game-data/assets/ASSETS/Items/Icons2D/6664_HollowRadiance.png"
+          },
+          {
+            "id": 3083,
+            "name": "狂徒铠甲",
+            "icon": "/lol-game-data/assets/ASSETS/Items/Icons2D/3083_Tank_T3_Warmogs.png"
+          },
+          {
+            "id": 2504,
+            "name": "败魔",
+            "icon": "/lol-game-data/assets/ASSETS/Items/Icons2D/2504_KaenicRookern.png"
+          },
+          {
+            "id": 3075,
+            "name": "荆棘之甲",
+            "icon": "/lol-game-data/assets/ASSETS/Items/Icons2D/3075_Tank_T3_Thornmail.png"
+          }
+        ],
+        "augments": [
+          {
+            "id": 1013,
+            "name": "星界躯体",
+            "icon": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/CelestialBody_small.png",
+            "rarity": "kGold",
+            "rarityCn": "金"
+          },
+          {
+            "id": 2032,
+            "name": "鲨鱼诱饵",
+            "icon": "/lol-game-data/assets/ASSETS/UX/Kiwi/Augments/Icons/FishBait_small.png",
+            "rarity": "kGold",
+            "rarityCn": "金"
+          },
+          {
+            "id": 2006,
+            "name": "飞身踢",
+            "icon": "/lol-game-data/assets/ASSETS/UX/Kiwi/Augments/Icons/Dropkick_small.png",
+            "rarity": "kPrismatic",
+            "rarityCn": "棱彩"
+          },
+          {
+            "id": 1237,
+            "name": "质变：黄金阶",
+            "icon": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/TransmuteGold_small.png",
+            "rarity": "kSilver",
+            "rarityCn": "银"
+          }
+        ],
+        "kills": 20,
+        "deaths": 16,
+        "assists": 38,
+        "cs": 84,
+        "gold": 31374,
+        "damageDealt": 32924,
+        "damageTaken": 148503,
+        "damageMitigated": 293768,
+        "healing": 15693,
+        "shielding": 0,
+        "turretDamage": 593,
+        "ccTime": 873,
+        "timeDead": 511,
+        "largestMultiKill": 2,
+        "killParticipation": 0.67,
+        "perMinute": {
+          "damageDealt": 1128.8,
+          "damageTaken": 5091.5,
+          "gold": 1075.7,
+          "cs": 2.9,
+          "healing": 538,
+          "shielding": 0,
+          "mitigated": 10072,
+          "turretDamage": 20.3,
+          "timeDead": 17.5
+        },
+        "deathTimes": [
+          "02:17",
+          "03:18",
+          "05:22",
+          "06:28",
+          "07:12",
+          "07:56",
+          "10:31",
+          "11:34",
+          "15:14",
+          "17:34",
+          "19:24",
+          "21:41",
+          "23:12",
+          "24:22",
+          "26:16",
+          "28:22"
+        ]
+      },
+      {
+        "pid": "p10",
+        "participantId": 10,
+        "teamId": 200,
+        "isMyTeam": true,
+        "champion": "塞拉斯",
+        "championTitle": "解脱者",
+        "championIcon": "/lol-game-data/assets/v1/champion-icons/517.png",
+        "championType": "MAGE",
+        "championTags": [
+          "mage",
+          "assassin"
+        ],
+        "level": 549,
+        "runes": [],
+        "items": [
+          {
+            "id": 6657,
+            "name": "时光之杖",
+            "icon": "/lol-game-data/assets/ASSETS/Items/Icons2D/6657_Mage_T4_RodOfAges.png"
+          },
+          {
+            "id": 4633,
+            "name": "裂隙制造者",
+            "icon": "/lol-game-data/assets/ASSETS/Items/Icons2D/4633_Mage_T4_Riftmaker.png"
+          },
+          {
+            "id": 3008,
+            "name": "暴食胫甲",
+            "icon": "/lol-game-data/assets/ASSETS/Items/Icons2D/3008_GluttonousGreaves.png"
+          },
+          {
+            "id": 3065,
+            "name": "振奋盔甲",
+            "icon": "/lol-game-data/assets/ASSETS/Items/Icons2D/3065_Tank_T3_SpiritVisage.png"
+          },
+          {
+            "id": 3075,
+            "name": "荆棘之甲",
+            "icon": "/lol-game-data/assets/ASSETS/Items/Icons2D/3075_Tank_T3_Thornmail.png"
+          },
+          {
+            "id": 2504,
+            "name": "败魔",
+            "icon": "/lol-game-data/assets/ASSETS/Items/Icons2D/2504_KaenicRookern.png"
+          }
+        ],
+        "augments": [
+          {
+            "id": 1390,
+            "name": "超凡邪恶",
+            "icon": "/lol-game-data/assets/ASSETS/UX/Kiwi/Augments/Icons/ARAM_PhenomenalEvil_small.png",
+            "rarity": "kGold",
+            "rarityCn": "金"
+          },
+          {
+            "id": 2132,
+            "name": "术士果汁盒",
+            "icon": "/lol-game-data/assets/ASSETS/UX/Kiwi/Augments/Icons/WarlockJuicebox_small.png",
+            "rarity": "kGold",
+            "rarityCn": "金"
+          },
+          {
+            "id": 1011,
+            "name": "你摸不到",
+            "icon": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/CantTouchThis_small.png",
+            "rarity": "kPrismatic",
+            "rarityCn": "棱彩"
+          },
+          {
+            "id": 1060,
+            "name": "海洋龙魂",
+            "icon": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/OceanSoul_small.png",
+            "rarity": "kSilver",
+            "rarityCn": "银"
+          }
+        ],
+        "kills": 7,
+        "deaths": 21,
+        "assists": 37,
+        "cs": 50,
+        "gold": 26513,
+        "damageDealt": 35367,
+        "damageTaken": 140989,
+        "damageMitigated": 176677,
+        "healing": 57991,
+        "shielding": 555,
+        "turretDamage": 179,
+        "ccTime": 240,
+        "timeDead": 642,
+        "largestMultiKill": 1,
+        "killParticipation": 0.51,
+        "perMinute": {
+          "damageDealt": 1212.6,
+          "damageTaken": 4833.9,
+          "gold": 909,
+          "cs": 1.7,
+          "healing": 1988.3,
+          "shielding": 19,
+          "mitigated": 6057.5,
+          "turretDamage": 6.1,
+          "timeDead": 22
+        },
+        "deathTimes": [
+          "01:17",
+          "02:55",
+          "03:58",
+          "05:16",
+          "06:12",
+          "06:47",
+          "07:30",
+          "08:56",
+          "09:36",
+          "10:30",
+          "11:13",
+          "13:16",
+          "14:37",
+          "15:40",
+          "17:09",
+          "19:12",
+          "20:44",
+          "23:21",
+          "24:31",
+          "26:12",
+          "28:15"
+        ]
+      },
+      {
+        "pid": "p1",
+        "participantId": 1,
+        "teamId": 100,
+        "isMyTeam": false,
+        "champion": "特朗德尔",
+        "championTitle": "巨魔之王",
+        "championIcon": "/lol-game-data/assets/v1/champion-icons/48.png",
+        "championType": "FIGHTER",
+        "championTags": [
+          "fighter",
+          "tank"
+        ],
+        "level": 130,
+        "runes": [],
+        "items": [
+          {
+            "id": 2522,
+            "name": "实现器",
+            "icon": "/lol-game-data/assets/ASSETS/Items/Icons2D/2522_ManaActive.png"
+          },
+          {
+            "id": 2503,
+            "name": "黯炎火炬",
+            "icon": "/lol-game-data/assets/ASSETS/Items/Icons2D/2503_BlackfireTorch64.png"
+          },
+          {
+            "id": 6653,
+            "name": "兰德里的折磨",
+            "icon": "/lol-game-data/assets/ASSETS/Items/Icons2D/6653_Mage_T4_LiandrysAnguish.png"
+          },
+          {
+            "id": 3040,
+            "name": "炽天使之拥",
+            "icon": "/lol-game-data/assets/ASSETS/Items/Icons2D/3048_Mage_T3_SeraphsEmbrace.png"
+          },
+          {
+            "id": 4005,
+            "name": "帝国指令",
+            "icon": "/lol-game-data/assets/ASSETS/Items/Icons2D/4005_Enchanter_T4_ImperialMandate.png"
+          },
+          {
+            "id": 3158,
+            "name": "明朗之靴",
+            "icon": "/lol-game-data/assets/ASSETS/Items/Icons2D/3158_Class_T2_IonianBootsofLucidity.png"
+          },
+          {
+            "id": 220013,
+            "name": "魄罗佳肴",
+            "icon": "/lol-game-data/assets/ASSETS/Items/Icons2D/2052_Poro_Snack_RainbowCandy.png"
+          }
+        ],
+        "augments": [
+          {
+            "id": 2129,
+            "name": "地形专家",
+            "icon": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/LightningStrikes_small.png",
+            "rarity": "kGold",
+            "rarityCn": "金"
+          },
+          {
+            "id": 1358,
+            "name": "弹球",
+            "icon": "/lol-game-data/assets/ASSETS/UX/Kiwi/Augments/Icons/PinballSnowball_small.png",
+            "rarity": "kGold",
+            "rarityCn": "金"
+          },
+          {
+            "id": 1004,
+            "name": "回归基本功",
+            "icon": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/BackToBasics_small.png",
+            "rarity": "kPrismatic",
+            "rarityCn": "棱彩"
+          },
+          {
+            "id": 2018,
+            "name": "纯粹主义者 - 术师",
+            "icon": "/lol-game-data/assets/ASSETS/UX/Kiwi/Augments/Icons/PuristCaster_small.png",
+            "rarity": "kSilver",
+            "rarityCn": "银"
+          }
+        ],
+        "kills": 8,
+        "deaths": 12,
+        "assists": 69,
+        "cs": 102,
+        "gold": 28667,
+        "damageDealt": 82932,
+        "damageTaken": 94689,
+        "damageMitigated": 51339,
+        "healing": 45531,
+        "shielding": 0,
+        "turretDamage": 1781,
+        "ccTime": 1336,
+        "timeDead": 349,
+        "largestMultiKill": 2,
+        "killParticipation": 0.81,
+        "perMinute": {
+          "damageDealt": 2843.4,
+          "damageTaken": 3246.5,
+          "gold": 982.9,
+          "cs": 3.5,
+          "healing": 1561.1,
+          "shielding": 0,
+          "mitigated": 1760.2,
+          "turretDamage": 61.1,
+          "timeDead": 12
+        },
+        "deathTimes": [
+          "00:52",
+          "02:12",
+          "03:14",
+          "06:02",
+          "07:19",
+          "09:48",
+          "11:28",
+          "14:45",
+          "16:13",
+          "21:35",
+          "24:48",
+          "26:54"
+        ]
+      },
+      {
+        "pid": "p2",
+        "participantId": 2,
+        "teamId": 100,
+        "isMyTeam": false,
+        "champion": "奥瑞利安·索尔",
+        "championTitle": "铸星龙王",
+        "championIcon": "/lol-game-data/assets/v1/champion-icons/136.png",
+        "championType": "MAGE",
+        "championTags": [
+          "mage"
+        ],
+        "level": 999,
+        "runes": [],
+        "items": [
+          {
+            "id": 6657,
+            "name": "时光之杖",
+            "icon": "/lol-game-data/assets/ASSETS/Items/Icons2D/6657_Mage_T4_RodOfAges.png"
+          },
+          {
+            "id": 6653,
+            "name": "兰德里的折磨",
+            "icon": "/lol-game-data/assets/ASSETS/Items/Icons2D/6653_Mage_T4_LiandrysAnguish.png"
+          },
+          {
+            "id": 3116,
+            "name": "瑞莱的冰晶节杖",
+            "icon": "/lol-game-data/assets/ASSETS/Items/Icons2D/3116_Mage_T3_RylajsCrystalScepter.png"
+          },
+          {
+            "id": 3089,
+            "name": "灭世者的死亡之帽",
+            "icon": "/lol-game-data/assets/ASSETS/Items/Icons2D/3089_Mage_T3_Deathcap.png"
+          },
+          {
+            "id": 8010,
+            "name": "放血者的诅咒",
+            "icon": "/lol-game-data/assets/ASSETS/Items/Icons2D/8010_BloodlettersCurse.png"
+          },
+          {
+            "id": 2503,
+            "name": "黯炎火炬",
+            "icon": "/lol-game-data/assets/ASSETS/Items/Icons2D/2503_BlackfireTorch64.png"
+          },
+          {
+            "id": 220013,
+            "name": "魄罗佳肴",
+            "icon": "/lol-game-data/assets/ASSETS/Items/Icons2D/2052_Poro_Snack_RainbowCandy.png"
+          }
+        ],
+        "augments": [
+          {
+            "id": 2128,
+            "name": "炽燃利息",
+            "icon": "/lol-game-data/assets/ASSETS/UX/Kiwi/Augments/Icons/BloodMoney2_small.png",
+            "rarity": "kGold",
+            "rarityCn": "金"
+          },
+          {
+            "id": 1072,
+            "name": "炽烈黎明",
+            "icon": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/SearingDawn_small.png",
+            "rarity": "kGold",
+            "rarityCn": "金"
+          },
+          {
+            "id": 1030,
+            "name": "尤里卡",
+            "icon": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/Eureka_small.png",
+            "rarity": "kPrismatic",
+            "rarityCn": "棱彩"
+          },
+          {
+            "id": 2131,
+            "name": "别停止引导",
+            "icon": "/lol-game-data/assets/ASSETS/UX/Kiwi/Augments/Icons/DontChangeTheChannel_small.png",
+            "rarity": "kSilver",
+            "rarityCn": "银"
+          }
+        ],
+        "kills": 29,
+        "deaths": 16,
+        "assists": 54,
+        "cs": 108,
+        "gold": 53476,
+        "damageDealt": 170304,
+        "damageTaken": 83112,
+        "damageMitigated": 101535,
+        "healing": 16988,
+        "shielding": 0,
+        "turretDamage": 1541,
+        "ccTime": 1041,
+        "timeDead": 506,
+        "largestMultiKill": 2,
+        "killParticipation": 0.87,
+        "perMinute": {
+          "damageDealt": 5839,
+          "damageTaken": 2849.6,
+          "gold": 1833.5,
+          "cs": 3.7,
+          "healing": 582.4,
+          "shielding": 0,
+          "mitigated": 3481.2,
+          "turretDamage": 52.8,
+          "timeDead": 17.3
+        },
+        "deathTimes": [
+          "01:58",
+          "03:13",
+          "05:23",
+          "06:04",
+          "07:16",
+          "08:12",
+          "09:52",
+          "11:45",
+          "13:25",
+          "15:42",
+          "18:28",
+          "19:37",
+          "21:43",
+          "23:29",
+          "24:46",
+          "27:05"
+        ]
+      },
+      {
+        "pid": "p3",
+        "participantId": 3,
+        "teamId": 100,
+        "isMyTeam": false,
+        "champion": "赛娜",
+        "championTitle": "涤魂圣枪",
+        "championIcon": "/lol-game-data/assets/v1/champion-icons/235.png",
+        "championType": "SUPPORT",
+        "championTags": [
+          "support",
+          "marksman"
+        ],
+        "level": 242,
+        "runes": [],
+        "items": [
+          {
+            "id": 3153,
+            "name": "破败王者之刃",
+            "icon": "/lol-game-data/assets/ASSETS/Items/Icons2D/3153_Fighter_T3_BladeOfTheRuinedKing.png"
+          },
+          {
+            "id": 124011,
+            "name": "花晓之剑",
+            "icon": "/lol-game-data/assets/ASSETS/Items/Icons2D/4011_SwordOfBlossomingDawn.png"
+          },
+          {
+            "id": 2517,
+            "name": "无穷饥渴",
+            "icon": "/lol-game-data/assets/ASSETS/Items/Icons2D/2517_ADFighterOmnivamp.png"
+          },
+          {
+            "id": 3085,
+            "name": "卢安娜的飓风",
+            "icon": "/lol-game-data/assets/ASSETS/Items/Icons2D/3085_Marksman_T3_Runaans.png"
+          },
+          {
+            "id": 3087,
+            "name": "斯塔缇克电刃",
+            "icon": "/lol-game-data/assets/ASSETS/Items/Icons2D/3087_Statikk_Shiv.png"
+          }
+        ],
+        "augments": [
+          {
+            "id": 1238,
+            "name": "质变：棱彩阶",
+            "icon": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/TransmutePrismatic_small.png",
+            "rarity": "kGold",
+            "rarityCn": "金"
+          },
+          {
+            "id": 1047,
+            "name": "关键暴击",
+            "icon": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/ItsCritical_small.png",
+            "rarity": "kGold",
+            "rarityCn": "金"
+          },
+          {
+            "id": 1379,
+            "name": "升级：花晓之剑",
+            "icon": "/lol-game-data/assets/ASSETS/UX/Kiwi/Augments/Icons/UpgradeMikaelsBlessing_small.png",
+            "rarity": "kPrismatic",
+            "rarityCn": "棱彩"
+          },
+          {
+            "id": 1037,
+            "name": "急救用具",
+            "icon": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/FirstAidKit_small.png",
+            "rarity": "kSilver",
+            "rarityCn": "银"
+          }
+        ],
+        "kills": 17,
+        "deaths": 17,
+        "assists": 63,
+        "cs": 71,
+        "gold": 30585,
+        "damageDealt": 75458,
+        "damageTaken": 71294,
+        "damageMitigated": 23278,
+        "healing": 70918,
+        "shielding": 4151,
+        "turretDamage": 2298,
+        "ccTime": 134,
+        "timeDead": 526,
+        "largestMultiKill": 3,
+        "killParticipation": 0.84,
+        "perMinute": {
+          "damageDealt": 2587.1,
+          "damageTaken": 2444.4,
+          "gold": 1048.6,
+          "cs": 2.4,
+          "healing": 2431.5,
+          "shielding": 142.3,
+          "mitigated": 798.1,
+          "turretDamage": 78.8,
+          "timeDead": 18
+        },
+        "deathTimes": [
+          "02:07",
+          "02:53",
+          "04:07",
+          "05:06",
+          "05:50",
+          "08:09",
+          "09:29",
+          "11:28",
+          "13:37",
+          "14:49",
+          "16:20",
+          "18:13",
+          "21:30",
+          "23:11",
+          "24:50",
+          "26:03",
+          "27:37"
+        ]
+      },
+      {
+        "pid": "p4",
+        "participantId": 4,
+        "teamId": 100,
+        "isMyTeam": false,
+        "champion": "辛德拉",
+        "championTitle": "暗黑元首",
+        "championIcon": "/lol-game-data/assets/v1/champion-icons/134.png",
+        "championType": "MAGE",
+        "championTags": [
+          "mage"
+        ],
+        "level": 443,
+        "runes": [],
+        "items": [
+          {
+            "id": 6655,
+            "name": "卢登的回声",
+            "icon": "/lol-game-data/assets/ASSETS/Items/Icons2D/6655_Mage_T4_LudensTempest.png"
+          },
+          {
+            "id": 4646,
+            "name": "风暴狂涌",
+            "icon": "/lol-game-data/assets/ASSETS/Items/Icons2D/4646_Stormsurge.png"
+          },
+          {
+            "id": 4645,
+            "name": "影焰",
+            "icon": "/lol-game-data/assets/ASSETS/Items/Icons2D/4645_Shadowflame.png"
+          },
+          {
+            "id": 3020,
+            "name": "法师之靴",
+            "icon": "/lol-game-data/assets/ASSETS/Items/Icons2D/3020_Class_T2_SorcerersShoes.png"
+          },
+          {
+            "id": 3089,
+            "name": "灭世者的死亡之帽",
+            "icon": "/lol-game-data/assets/ASSETS/Items/Icons2D/3089_Mage_T3_Deathcap.png"
+          },
+          {
+            "id": 3135,
+            "name": "虚空之杖",
+            "icon": "/lol-game-data/assets/ASSETS/Items/Icons2D/3135_Mage_T3_VoidStaff.png"
+          }
+        ],
+        "augments": [
+          {
+            "id": 2083,
+            "name": "牙仙子",
+            "icon": "/lol-game-data/assets/ASSETS/UX/Kiwi/Augments/Icons/QuestBurstingTeeth_small.png",
+            "rarity": "kGold",
+            "rarityCn": "金"
+          },
+          {
+            "id": 1390,
+            "name": "超凡邪恶",
+            "icon": "/lol-game-data/assets/ASSETS/UX/Kiwi/Augments/Icons/ARAM_PhenomenalEvil_small.png",
+            "rarity": "kGold",
+            "rarityCn": "金"
+          },
+          {
+            "id": 1053,
+            "name": "科学狂人",
+            "icon": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/MadScientist_small.png",
+            "rarity": "kPrismatic",
+            "rarityCn": "棱彩"
+          },
+          {
+            "id": 2018,
+            "name": "纯粹主义者 - 术师",
+            "icon": "/lol-game-data/assets/ASSETS/UX/Kiwi/Augments/Icons/PuristCaster_small.png",
+            "rarity": "kSilver",
+            "rarityCn": "银"
+          }
+        ],
+        "kills": 20,
+        "deaths": 19,
+        "assists": 37,
+        "cs": 86,
+        "gold": 28282,
+        "damageDealt": 70205,
+        "damageTaken": 63132,
+        "damageMitigated": 21076,
+        "healing": 5708,
+        "shielding": 0,
+        "turretDamage": 0,
+        "ccTime": 394,
+        "timeDead": 630,
+        "largestMultiKill": 2,
+        "killParticipation": 0.6,
+        "perMinute": {
+          "damageDealt": 2407,
+          "damageTaken": 2164.5,
+          "gold": 969.7,
+          "cs": 2.9,
+          "healing": 195.7,
+          "shielding": 0,
+          "mitigated": 722.6,
+          "turretDamage": 0,
+          "timeDead": 21.6
+        },
+        "deathTimes": [
+          "01:33",
+          "03:20",
+          "05:58",
+          "06:29",
+          "07:50",
+          "09:55",
+          "10:36",
+          "12:00",
+          "13:19",
+          "14:54",
+          "18:22",
+          "19:19",
+          "20:47",
+          "22:09",
+          "23:59",
+          "25:14",
+          "26:26",
+          "27:34",
+          "28:22"
+        ]
+      },
+      {
+        "pid": "p5",
+        "participantId": 5,
+        "teamId": 100,
+        "isMyTeam": false,
+        "champion": "孙悟空",
+        "championTitle": "齐天大圣",
+        "championIcon": "/lol-game-data/assets/v1/champion-icons/62.png",
+        "championType": "FIGHTER",
+        "championTags": [
+          "fighter",
+          "tank"
+        ],
+        "level": 294,
+        "runes": [],
+        "items": [
+          {
+            "id": 3078,
+            "name": "三相之力",
+            "icon": "/lol-game-data/assets/ASSETS/Items/Icons2D/3078_Fighter_T4_TrinityForce.png"
+          },
+          {
+            "id": 6692,
+            "name": "星蚀",
+            "icon": "/lol-game-data/assets/ASSETS/Items/Icons2D/6692_Assassin_T4_Eclipse.png"
+          },
+          {
+            "id": 6333,
+            "name": "死亡之舞",
+            "icon": "/lol-game-data/assets/ASSETS/Items/Icons2D/6333_Fighter_T3_DeathsDance.png"
+          },
+          {
+            "id": 3047,
+            "name": "铁板靴",
+            "icon": "/lol-game-data/assets/ASSETS/Items/Icons2D/3047_Class_T2_NinjaTabi.png"
+          },
+          {
+            "id": 3156,
+            "name": "玛莫提乌斯之噬",
+            "icon": "/lol-game-data/assets/ASSETS/Items/Icons2D/3156_Fighter_T3_MawOfMalmortius.png"
+          },
+          {
+            "id": 6695,
+            "name": "巨蛇之牙",
+            "icon": "/lol-game-data/assets/ASSETS/Items/Icons2D/6695_Assassin_T3_SerpentsFang.png"
+          }
+        ],
+        "augments": [
+          {
+            "id": 2083,
+            "name": "牙仙子",
+            "icon": "/lol-game-data/assets/ASSETS/UX/Kiwi/Augments/Icons/QuestBurstingTeeth_small.png",
+            "rarity": "kGold",
+            "rarityCn": "金"
+          },
+          {
+            "id": 1996,
+            "name": "升级：耀光",
+            "icon": "/lol-game-data/assets/ASSETS/UX/Kiwi/Augments/Icons/UpgradeSheen_small.png",
+            "rarity": "kGold",
+            "rarityCn": "金"
+          },
+          {
+            "id": 1220,
+            "name": "连拨击锤",
+            "icon": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/FanTheHammer_small.png",
+            "rarity": "kPrismatic",
+            "rarityCn": "棱彩"
+          },
+          {
+            "id": 1214,
+            "name": "旋转至胜",
+            "icon": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/SpinToWin_small.png",
+            "rarity": "kSilver",
+            "rarityCn": "银"
+          }
+        ],
+        "kills": 21,
+        "deaths": 22,
+        "assists": 49,
+        "cs": 32,
+        "gold": 28941,
+        "damageDealt": 86431,
+        "damageTaken": 81653,
+        "damageMitigated": 130187,
+        "healing": 12265,
+        "shielding": 0,
+        "turretDamage": 6520,
+        "ccTime": 45,
+        "timeDead": 665,
+        "largestMultiKill": 3,
+        "killParticipation": 0.74,
+        "perMinute": {
+          "damageDealt": 2963.3,
+          "damageTaken": 2799.5,
+          "gold": 992.3,
+          "cs": 1.1,
+          "healing": 420.5,
+          "shielding": 0,
+          "mitigated": 4463.6,
+          "turretDamage": 223.5,
+          "timeDead": 22.8
+        },
+        "deathTimes": [
+          "00:56",
+          "02:03",
+          "02:43",
+          "03:10",
+          "04:03",
+          "05:40",
+          "06:12",
+          "08:06",
+          "08:58",
+          "09:47",
+          "11:25",
+          "13:23",
+          "14:55",
+          "16:22",
+          "18:22",
+          "19:27",
+          "20:46",
+          "21:49",
+          "23:13",
+          "24:54",
+          "26:00",
+          "27:41"
+        ]
+      }
+    ],
+    "timeline": [
+      {
+        "time": "00:47",
+        "type": "CHAMPION_KILL",
+        "actor": "p4",
+        "victim": "p7",
+        "assisters": [
+          "p1",
+          "p2",
+          "p3",
+          "p5"
+        ]
+      },
+      {
+        "time": "00:52",
+        "type": "CHAMPION_KILL",
+        "actor": "p10",
+        "victim": "p1",
+        "assisters": [
+          "p6",
+          "p7",
+          "p8",
+          "p9"
+        ]
+      },
+      {
+        "time": "00:54",
+        "type": "CHAMPION_KILL",
+        "actor": "p5",
+        "victim": "p8",
+        "assisters": [
+          "p1",
+          "p2",
+          "p3",
+          "p4"
+        ]
+      },
+      {
+        "time": "00:56",
+        "type": "CHAMPION_KILL",
+        "actor": "p8",
+        "victim": "p5",
+        "assisters": [
+          "p6",
+          "p7",
+          "p9",
+          "p10"
+        ]
+      },
+      {
+        "time": "01:17",
+        "type": "CHAMPION_KILL",
+        "actor": "p2",
+        "victim": "p10",
+        "assisters": [
+          "p1",
+          "p3",
+          "p4",
+          "p5"
+        ]
+      },
+      {
+        "time": "01:32",
+        "type": "CHAMPION_KILL",
+        "actor": "p3",
+        "victim": "p8",
+        "assisters": [
+          "p1",
+          "p2",
+          "p4",
+          "p5"
+        ]
+      },
+      {
+        "time": "01:33",
+        "type": "CHAMPION_KILL",
+        "actor": "p8",
+        "victim": "p4",
+        "assisters": [
+          "p7",
+          "p9"
+        ]
+      },
+      {
+        "time": "01:34",
+        "type": "CHAMPION_KILL",
+        "actor": "p5",
+        "victim": "p7",
+        "assisters": [
+          "p1",
+          "p2",
+          "p3",
+          "p4"
+        ]
+      },
+      {
+        "time": "01:58",
+        "type": "CHAMPION_KILL",
+        "actor": "p6",
+        "victim": "p2",
+        "assisters": [
+          "p10"
+        ]
+      },
+      {
+        "time": "02:03",
+        "type": "CHAMPION_KILL",
+        "actor": "p8",
+        "victim": "p5",
+        "assisters": [
+          "p7",
+          "p9",
+          "p10"
+        ]
+      },
+      {
+        "time": "02:07",
+        "type": "CHAMPION_KILL",
+        "actor": "p8",
+        "victim": "p3",
+        "assisters": [
+          "p9",
+          "p10"
+        ]
+      },
+      {
+        "time": "02:07",
+        "type": "CHAMPION_KILL",
+        "actor": "p1",
+        "victim": "p8",
+        "assisters": [
+          "p2",
+          "p3",
+          "p4"
+        ]
+      },
+      {
+        "time": "02:12",
+        "type": "CHAMPION_KILL",
+        "actor": "p9",
+        "victim": "p1",
+        "assisters": [
+          "p7",
+          "p8",
+          "p10"
+        ]
+      },
+      {
+        "time": "02:17",
+        "type": "CHAMPION_KILL",
+        "actor": "p2",
+        "victim": "p9",
+        "assisters": [
+          "p1",
+          "p3",
+          "p4",
+          "p5"
+        ]
+      },
+      {
+        "time": "02:42",
+        "type": "CHAMPION_KILL",
+        "actor": "p2",
+        "victim": "p7",
+        "assisters": [
+          "p1",
+          "p3",
+          "p5"
+        ]
+      },
+      {
+        "time": "02:43",
+        "type": "CHAMPION_KILL",
+        "actor": "p5",
+        "victim": "p8",
+        "assisters": [
+          "p1",
+          "p2",
+          "p3",
+          "p4"
+        ]
+      },
+      {
+        "time": "02:43",
+        "type": "CHAMPION_KILL",
+        "actor": "p9",
+        "victim": "p5",
+        "assisters": [
+          "p6",
+          "p7",
+          "p8",
+          "p10"
+        ]
+      },
+      {
+        "time": "02:53",
+        "type": "CHAMPION_KILL",
+        "actor": "p9",
+        "victim": "p3",
+        "assisters": [
+          "p6",
+          "p8"
+        ]
+      },
+      {
+        "time": "02:55",
+        "type": "CHAMPION_KILL",
+        "actor": "p2",
+        "victim": "p10",
+        "assisters": [
+          "p1",
+          "p3",
+          "p4",
+          "p5"
+        ]
+      },
+      {
+        "time": "03:10",
+        "type": "CHAMPION_KILL",
+        "actor": "p8",
+        "victim": "p5",
+        "assisters": [
+          "p6",
+          "p7",
+          "p9"
+        ]
+      },
+      {
+        "time": "03:13",
+        "type": "CHAMPION_KILL",
+        "actor": "p8",
+        "victim": "p2",
+        "assisters": [
+          "p6",
+          "p7",
+          "p9"
+        ]
+      },
+      {
+        "time": "03:14",
+        "type": "CHAMPION_KILL",
+        "actor": "p9",
+        "victim": "p1",
+        "assisters": [
+          "p6"
+        ]
+      },
+      {
+        "time": "03:18",
+        "type": "CHAMPION_KILL",
+        "actor": "p3",
+        "victim": "p9",
+        "assisters": [
+          "p1",
+          "p2",
+          "p4",
+          "p5"
+        ]
+      },
+      {
+        "time": "03:19",
+        "type": "CHAMPION_KILL",
+        "actor": "p4",
+        "victim": "p8",
+        "assisters": [
+          "p2",
+          "p3",
+          "p5"
+        ]
+      },
+      {
+        "time": "03:20",
+        "type": "CHAMPION_KILL",
+        "actor": "p10",
+        "victim": "p4",
+        "assisters": [
+          "p6",
+          "p7",
+          "p9"
+        ]
+      },
+      {
+        "time": "03:22",
+        "type": "CHAMPION_KILL",
+        "actor": "p3",
+        "victim": "p6",
+        "assisters": [
+          "p2",
+          "p5"
+        ]
+      },
+      {
+        "time": "03:35",
+        "type": "CHAMPION_KILL",
+        "actor": "p5",
+        "victim": "p7",
+        "assisters": [
+          "p1",
+          "p3"
+        ]
+      },
+      {
+        "time": "03:58",
+        "type": "CHAMPION_KILL",
+        "actor": "p5",
+        "victim": "p10",
+        "assisters": [
+          "p1",
+          "p2",
+          "p3",
+          "p4"
+        ]
+      },
+      {
+        "time": "03:58",
+        "type": "CHAMPION_KILL",
+        "actor": "p2",
+        "victim": "p8",
+        "assisters": [
+          "p1",
+          "p3",
+          "p4",
+          "p5"
+        ]
+      },
+      {
+        "time": "04:03",
+        "type": "CHAMPION_KILL",
+        "actor": "p6",
+        "victim": "p5",
+        "assisters": [
+          "p8",
+          "p9",
+          "p10"
+        ]
+      },
+      {
+        "time": "04:07",
+        "type": "CHAMPION_KILL",
+        "actor": "p7",
+        "victim": "p3",
+        "assisters": [
+          "p8",
+          "p9"
+        ]
+      },
+      {
+        "time": "04:48",
+        "type": "CHAMPION_KILL",
+        "actor": "p3",
+        "victim": "p8",
+        "assisters": [
+          "p1",
+          "p2",
+          "p4",
+          "p5"
+        ]
+      },
+      {
+        "time": "05:06",
+        "type": "CHAMPION_KILL",
+        "actor": "p6",
+        "victim": "p3",
+        "assisters": [
+          "p8",
+          "p9",
+          "p10"
+        ]
+      },
+      {
+        "time": "05:06",
+        "type": "BUILDING_KILL",
+        "actor": "p9",
+        "assisters": [
+          "p7"
+        ],
+        "object": "中路外塔"
+      },
+      {
+        "time": "05:06",
+        "type": "CHAMPION_KILL",
+        "actor": "p5",
+        "victim": "p6",
+        "assisters": [
+          "p2",
+          "p3",
+          "p4"
+        ]
+      },
+      {
+        "time": "05:15",
+        "type": "CHAMPION_KILL",
+        "actor": "p4",
+        "victim": "p7",
+        "assisters": [
+          "p1",
+          "p2",
+          "p3",
+          "p5"
+        ]
+      },
+      {
+        "time": "05:16",
+        "type": "CHAMPION_KILL",
+        "actor": "p5",
+        "victim": "p10",
+        "assisters": [
+          "p1",
+          "p2",
+          "p4"
+        ]
+      },
+      {
+        "time": "05:22",
+        "type": "CHAMPION_KILL",
+        "actor": "p4",
+        "victim": "p9",
+        "assisters": [
+          "p1",
+          "p2",
+          "p5"
+        ]
+      },
+      {
+        "time": "05:23",
+        "type": "CHAMPION_KILL",
+        "actor": "p5",
+        "victim": "p8",
+        "assisters": [
+          "p2"
+        ]
+      },
+      {
+        "time": "05:23",
+        "type": "CHAMPION_KILL",
+        "actor": "p8",
+        "victim": "p2",
+        "assisters": [
+          "p6",
+          "p7",
+          "p9"
+        ]
+      },
+      {
+        "time": "05:40",
+        "type": "CHAMPION_KILL",
+        "actor": "p6",
+        "victim": "p5",
+        "assisters": [
+          "p8"
+        ]
+      },
+      {
+        "time": "05:50",
+        "type": "CHAMPION_KILL",
+        "actor": "p6",
+        "victim": "p3",
+        "assisters": [
+          "p10"
+        ]
+      },
+      {
+        "time": "05:58",
+        "type": "CHAMPION_KILL",
+        "actor": "p9",
+        "victim": "p4",
+        "assisters": [
+          "p10"
+        ]
+      },
+      {
+        "time": "06:02",
+        "type": "CHAMPION_KILL",
+        "actor": "p9",
+        "victim": "p1",
+        "assisters": [
+          "p6",
+          "p8",
+          "p10"
+        ]
+      },
+      {
+        "time": "06:04",
+        "type": "CHAMPION_KILL",
+        "actor": "p8",
+        "victim": "p2",
+        "assisters": [
+          "p7",
+          "p9"
+        ]
+      },
+      {
+        "time": "06:08",
+        "type": "CHAMPION_KILL",
+        "actor": "p5",
+        "victim": "p6",
+        "assisters": [
+          "p1",
+          "p2"
+        ]
+      },
+      {
+        "time": "06:12",
+        "type": "CHAMPION_KILL",
+        "actor": "p5",
+        "victim": "p10",
+        "assisters": [
+          "p1",
+          "p2"
+        ]
+      },
+      {
+        "time": "06:12",
+        "type": "CHAMPION_KILL",
+        "actor": "p10",
+        "victim": "p5",
+        "assisters": [
+          "p7",
+          "p8",
+          "p9"
+        ]
+      },
+      {
+        "time": "06:28",
+        "type": "CHAMPION_KILL",
+        "actor": "p3",
+        "victim": "p9",
+        "assisters": [
+          "p4"
+        ]
+      },
+      {
+        "time": "06:28",
+        "type": "CHAMPION_KILL",
+        "actor": "p4",
+        "victim": "p8",
+        "assisters": [
+          "p3",
+          "p5"
+        ]
+      },
+      {
+        "time": "06:29",
+        "type": "CHAMPION_KILL",
+        "actor": "p8",
+        "victim": "p4",
+        "assisters": [
+          "p7",
+          "p9"
+        ]
+      },
+      {
+        "time": "06:34",
+        "type": "CHAMPION_KILL",
+        "actor": "p1",
+        "victim": "p7",
+        "assisters": [
+          "p2",
+          "p3",
+          "p4"
+        ]
+      },
+      {
+        "time": "06:47",
+        "type": "CHAMPION_KILL",
+        "actor": "p2",
+        "victim": "p10",
+        "assisters": [
+          "p1",
+          "p3",
+          "p5"
+        ]
+      },
+      {
+        "time": "07:06",
+        "type": "CHAMPION_KILL",
+        "actor": "p2",
+        "victim": "p7",
+        "assisters": [
+          "p1",
+          "p3",
+          "p4",
+          "p5"
+        ]
+      },
+      {
+        "time": "07:12",
+        "type": "CHAMPION_KILL",
+        "actor": "p5",
+        "victim": "p9",
+        "assisters": [
+          "p1",
+          "p2",
+          "p3",
+          "p4"
+        ]
+      },
+      {
+        "time": "07:16",
+        "type": "CHAMPION_KILL",
+        "actor": "p6",
+        "victim": "p2",
+        "assisters": [
+          "p8",
+          "p9"
+        ]
+      },
+      {
+        "time": "07:18",
+        "type": "CHAMPION_KILL",
+        "actor": "p3",
+        "victim": "p8",
+        "assisters": [
+          "p1",
+          "p2",
+          "p4",
+          "p5"
+        ]
+      },
+      {
+        "time": "07:19",
+        "type": "CHAMPION_KILL",
+        "actor": "p10",
+        "victim": "p1",
+        "assisters": [
+          "p7",
+          "p8",
+          "p9"
+        ]
+      },
+      {
+        "time": "07:30",
+        "type": "CHAMPION_KILL",
+        "actor": "p3",
+        "victim": "p10",
+        "assisters": [
+          "p1",
+          "p2",
+          "p4",
+          "p5"
+        ]
+      },
+      {
+        "time": "07:35",
+        "type": "CHAMPION_KILL",
+        "actor": "p5",
+        "victim": "p6",
+        "assisters": [
+          "p2",
+          "p3",
+          "p4"
+        ]
+      },
+      {
+        "time": "07:50",
+        "type": "CHAMPION_KILL",
+        "actor": "p9",
+        "victim": "p4",
+        "assisters": [
+          "p7",
+          "p10"
+        ]
+      },
+      {
+        "time": "07:56",
+        "type": "CHAMPION_KILL",
+        "actor": "p5",
+        "victim": "p9",
+        "assisters": [
+          "p2",
+          "p3",
+          "p4"
+        ]
+      },
+      {
+        "time": "08:04",
+        "type": "CHAMPION_KILL",
+        "actor": "p5",
+        "victim": "p8",
+        "assisters": [
+          "p1",
+          "p2",
+          "p3"
+        ]
+      },
+      {
+        "time": "08:06",
+        "type": "CHAMPION_KILL",
+        "actor": "p8",
+        "victim": "p5",
+        "assisters": [
+          "p7",
+          "p9",
+          "p10"
+        ]
+      },
+      {
+        "time": "08:09",
+        "type": "CHAMPION_KILL",
+        "actor": "p8",
+        "victim": "p3",
+        "assisters": [
+          "p10"
+        ]
+      },
+      {
+        "time": "08:12",
+        "type": "CHAMPION_KILL",
+        "actor": "p7",
+        "victim": "p2",
+        "assisters": [
+          "p6",
+          "p8",
+          "p9",
+          "p10"
+        ]
+      },
+      {
+        "time": "08:13",
+        "type": "CHAMPION_KILL",
+        "actor": "p1",
+        "victim": "p7",
+        "assisters": [
+          "p2",
+          "p3",
+          "p5"
+        ]
+      },
+      {
+        "time": "08:53",
+        "type": "CHAMPION_KILL",
+        "actor": "p1",
+        "victim": "p8",
+        "assisters": [
+          "p2",
+          "p3",
+          "p5"
+        ]
+      },
+      {
+        "time": "08:56",
+        "type": "CHAMPION_KILL",
+        "actor": "p4",
+        "victim": "p10",
+        "assisters": [
+          "p1",
+          "p2",
+          "p3",
+          "p5"
+        ]
+      },
+      {
+        "time": "08:58",
+        "type": "CHAMPION_KILL",
+        "actor": "p8",
+        "victim": "p5",
+        "assisters": [
+          "p6"
+        ]
+      },
+      {
+        "time": "09:29",
+        "type": "CHAMPION_KILL",
+        "actor": "p10",
+        "victim": "p3",
+        "assisters": [
+          "p7"
+        ]
+      },
+      {
+        "time": "09:36",
+        "type": "CHAMPION_KILL",
+        "actor": "p5",
+        "victim": "p10",
+        "assisters": [
+          "p2",
+          "p3",
+          "p4"
+        ]
+      },
+      {
+        "time": "09:40",
+        "type": "CHAMPION_KILL",
+        "actor": "p5",
+        "victim": "p8",
+        "assisters": [
+          "p1",
+          "p2",
+          "p3",
+          "p4"
+        ]
+      },
+      {
+        "time": "09:47",
+        "type": "CHAMPION_KILL",
+        "actor": "p6",
+        "victim": "p5",
+        "assisters": [
+          "p7",
+          "p8",
+          "p9"
+        ]
+      },
+      {
+        "time": "09:48",
+        "type": "CHAMPION_KILL",
+        "actor": "p7",
+        "victim": "p1",
+        "assisters": [
+          "p8",
+          "p9",
+          "p10"
+        ]
+      },
+      {
+        "time": "09:52",
+        "type": "CHAMPION_KILL",
+        "actor": "p9",
+        "victim": "p2",
+        "assisters": [
+          "p8"
+        ]
+      },
+      {
+        "time": "09:55",
+        "type": "CHAMPION_KILL",
+        "actor": "p7",
+        "victim": "p4",
+        "assisters": [
+          "p8"
+        ]
+      },
+      {
+        "time": "10:18",
+        "type": "BUILDING_KILL",
+        "actor": "p7",
+        "assisters": [
+          "p6",
+          "p9"
+        ],
+        "object": "中路内塔"
+      },
+      {
+        "time": "10:30",
+        "type": "CHAMPION_KILL",
+        "actor": "p4",
+        "victim": "p10",
+        "assisters": [
+          "p1",
+          "p2",
+          "p3",
+          "p5"
+        ]
+      },
+      {
+        "time": "10:31",
+        "type": "CHAMPION_KILL",
+        "actor": "p3",
+        "victim": "p9",
+        "assisters": [
+          "p1",
+          "p2",
+          "p4",
+          "p5"
+        ]
+      },
+      {
+        "time": "10:34",
+        "type": "CHAMPION_KILL",
+        "actor": "p2",
+        "victim": "p7",
+        "assisters": [
+          "p1",
+          "p3"
+        ]
+      },
+      {
+        "time": "10:35",
+        "type": "CHAMPION_KILL",
+        "actor": "p1",
+        "victim": "p8",
+        "assisters": [
+          "p2",
+          "p3",
+          "p4"
+        ]
+      },
+      {
+        "time": "10:36",
+        "type": "CHAMPION_KILL",
+        "actor": "p8",
+        "victim": "p4",
+        "assisters": [
+          "p6",
+          "p9"
+        ]
+      },
+      {
+        "time": "10:41",
+        "type": "CHAMPION_KILL",
+        "actor": "p1",
+        "victim": "p6",
+        "assisters": [
+          "p2",
+          "p3",
+          "p5"
+        ]
+      },
+      {
+        "time": "11:01",
+        "type": "BUILDING_KILL",
+        "actor": "p3",
+        "assisters": [
+          "p1",
+          "p2",
+          "p5"
+        ],
+        "object": "中路外塔"
+      },
+      {
+        "time": "11:13",
+        "type": "CHAMPION_KILL",
+        "actor": "p3",
+        "victim": "p10",
+        "assisters": [
+          "p1",
+          "p2",
+          "p5"
+        ]
+      },
+      {
+        "time": "11:16",
+        "type": "CHAMPION_KILL",
+        "actor": "p5",
+        "victim": "p7",
+        "assisters": [
+          "p1",
+          "p2",
+          "p3"
+        ]
+      },
+      {
+        "time": "11:22",
+        "type": "CHAMPION_KILL",
+        "actor": "p5",
+        "victim": "p8",
+        "assisters": [
+          "p2",
+          "p3"
+        ]
+      },
+      {
+        "time": "11:25",
+        "type": "CHAMPION_KILL",
+        "actor": "p8",
+        "victim": "p5",
+        "assisters": [
+          "p6",
+          "p7",
+          "p9",
+          "p10"
+        ]
+      },
+      {
+        "time": "11:28",
+        "type": "CHAMPION_KILL",
+        "actor": "p9",
+        "victim": "p3",
+        "assisters": [
+          "p8"
+        ]
+      },
+      {
+        "time": "11:28",
+        "type": "CHAMPION_KILL",
+        "actor": "p9",
+        "victim": "p1",
+        "assisters": [
+          "p8",
+          "p10"
+        ]
+      },
+      {
+        "time": "11:34",
+        "type": "CHAMPION_KILL",
+        "actor": "p2",
+        "victim": "p9",
+        "assisters": [
+          "p1",
+          "p3",
+          "p4",
+          "p5"
+        ]
+      },
+      {
+        "time": "11:45",
+        "type": "CHAMPION_KILL",
+        "actor": "p6",
+        "victim": "p2",
+        "assisters": [
+          "p9"
+        ]
+      },
+      {
+        "time": "11:51",
+        "type": "CHAMPION_KILL",
+        "actor": "p4",
+        "victim": "p6",
+        "assisters": [
+          "p2"
+        ]
+      },
+      {
+        "time": "12:00",
+        "type": "CHAMPION_KILL",
+        "actor": "p7",
+        "victim": "p4",
+        "assisters": [
+          "p10"
+        ]
+      },
+      {
+        "time": "13:16",
+        "type": "CHAMPION_KILL",
+        "actor": "p2",
+        "victim": "p10",
+        "assisters": [
+          "p1",
+          "p3",
+          "p4",
+          "p5"
+        ]
+      },
+      {
+        "time": "13:19",
+        "type": "CHAMPION_KILL",
+        "actor": "p8",
+        "victim": "p4",
+        "assisters": [
+          "p6",
+          "p7",
+          "p9"
+        ]
+      },
+      {
+        "time": "13:21",
+        "type": "CHAMPION_KILL",
+        "actor": "p3",
+        "victim": "p8",
+        "assisters": [
+          "p1",
+          "p2"
+        ]
+      },
+      {
+        "time": "13:23",
+        "type": "CHAMPION_KILL",
+        "actor": "p6",
+        "victim": "p5",
+        "assisters": [
+          "p8",
+          "p9"
+        ]
+      },
+      {
+        "time": "13:25",
+        "type": "CHAMPION_KILL",
+        "actor": "p8",
+        "victim": "p2",
+        "assisters": [
+          "p6",
+          "p7",
+          "p9"
+        ]
+      },
+      {
+        "time": "13:28",
+        "type": "CHAMPION_KILL",
+        "actor": "p3",
+        "victim": "p7",
+        "assisters": [
+          "p1",
+          "p2",
+          "p4",
+          "p5"
+        ]
+      },
+      {
+        "time": "13:37",
+        "type": "CHAMPION_KILL",
+        "actor": "p3",
+        "victim": "p6",
+        "assisters": [
+          "p1",
+          "p5"
+        ]
+      },
+      {
+        "time": "13:37",
+        "type": "CHAMPION_KILL",
+        "actor": "p6",
+        "victim": "p3"
+      },
+      {
+        "time": "14:37",
+        "type": "CHAMPION_KILL",
+        "actor": "p4",
+        "victim": "p10",
+        "assisters": [
+          "p1",
+          "p2",
+          "p3"
+        ]
+      },
+      {
+        "time": "14:45",
+        "type": "CHAMPION_KILL",
+        "actor": "p7",
+        "victim": "p1",
+        "assisters": [
+          "p8",
+          "p10"
+        ]
+      },
+      {
+        "time": "14:48",
+        "type": "CHAMPION_KILL",
+        "actor": "p2",
+        "victim": "p7",
+        "assisters": [
+          "p1",
+          "p3",
+          "p4",
+          "p5"
+        ]
+      },
+      {
+        "time": "14:49",
+        "type": "CHAMPION_KILL",
+        "actor": "p9",
+        "victim": "p3",
+        "assisters": [
+          "p6",
+          "p8",
+          "p10"
+        ]
+      },
+      {
+        "time": "14:54",
+        "type": "CHAMPION_KILL",
+        "actor": "p9",
+        "victim": "p4",
+        "assisters": [
+          "p7",
+          "p8",
+          "p10"
+        ]
+      },
+      {
+        "time": "14:54",
+        "type": "CHAMPION_KILL",
+        "actor": "p5",
+        "victim": "p8"
+      },
+      {
+        "time": "14:55",
+        "type": "CHAMPION_KILL",
+        "actor": "p6",
+        "victim": "p5",
+        "assisters": [
+          "p7",
+          "p8",
+          "p9"
+        ]
+      },
+      {
+        "time": "15:07",
+        "type": "CHAMPION_KILL",
+        "actor": "p2",
+        "victim": "p6"
+      },
+      {
+        "time": "15:14",
+        "type": "CHAMPION_KILL",
+        "actor": "p2",
+        "victim": "p9",
+        "assisters": [
+          "p4"
+        ]
+      },
+      {
+        "time": "15:40",
+        "type": "CHAMPION_KILL",
+        "actor": "p2",
+        "victim": "p10",
+        "assisters": [
+          "p1",
+          "p3"
+        ]
+      },
+      {
+        "time": "15:42",
+        "type": "CHAMPION_KILL",
+        "actor": "p7",
+        "victim": "p2",
+        "assisters": [
+          "p8",
+          "p10"
+        ]
+      },
+      {
+        "time": "15:46",
+        "type": "CHAMPION_KILL",
+        "actor": "p4",
+        "victim": "p7",
+        "assisters": [
+          "p1",
+          "p3",
+          "p5"
+        ]
+      },
+      {
+        "time": "15:56",
+        "type": "CHAMPION_KILL",
+        "actor": "p5",
+        "victim": "p6",
+        "assisters": [
+          "p1",
+          "p3",
+          "p4"
+        ]
+      },
+      {
+        "time": "16:13",
+        "type": "CHAMPION_KILL",
+        "actor": "p8",
+        "victim": "p1",
+        "assisters": [
+          "p6"
+        ]
+      },
+      {
+        "time": "16:20",
+        "type": "CHAMPION_KILL",
+        "actor": "p9",
+        "victim": "p3",
+        "assisters": [
+          "p8"
+        ]
+      },
+      {
+        "time": "16:22",
+        "type": "CHAMPION_KILL",
+        "actor": "p8",
+        "victim": "p5",
+        "assisters": [
+          "p9",
+          "p10"
+        ]
+      },
+      {
+        "time": "16:55",
+        "type": "BUILDING_KILL",
+        "actor": "p10",
+        "assisters": [
+          "p7",
+          "p9"
+        ],
+        "object": "兵营"
+      },
+      {
+        "time": "17:09",
+        "type": "CHAMPION_KILL",
+        "actor": "p4",
+        "victim": "p10",
+        "assisters": [
+          "p1",
+          "p2",
+          "p3",
+          "p5"
+        ]
+      },
+      {
+        "time": "17:13",
+        "type": "CHAMPION_KILL",
+        "actor": "p4",
+        "victim": "p8",
+        "assisters": [
+          "p3"
+        ]
+      },
+      {
+        "time": "17:27",
+        "type": "CHAMPION_KILL",
+        "actor": "p3",
+        "victim": "p7",
+        "assisters": [
+          "p1",
+          "p2",
+          "p4",
+          "p5"
+        ]
+      },
+      {
+        "time": "17:34",
+        "type": "CHAMPION_KILL",
+        "actor": "p2",
+        "victim": "p9",
+        "assisters": [
+          "p1",
+          "p3",
+          "p4",
+          "p5"
+        ]
+      },
+      {
+        "time": "17:38",
+        "type": "CHAMPION_KILL",
+        "actor": "p2",
+        "victim": "p6",
+        "assisters": [
+          "p3",
+          "p5"
+        ]
+      },
+      {
+        "time": "17:54",
+        "type": "BUILDING_KILL",
+        "actor": "p1",
+        "object": "中路内塔"
+      },
+      {
+        "time": "18:01",
+        "type": "BUILDING_KILL",
+        "actor": "p5",
+        "assisters": [
+          "p3",
+          "p4"
+        ],
+        "object": "兵营"
+      },
+      {
+        "time": "18:13",
+        "type": "CHAMPION_KILL",
+        "actor": "p10",
+        "victim": "p3",
+        "assisters": [
+          "p7",
+          "p8"
+        ]
+      },
+      {
+        "time": "18:18",
+        "type": "CHAMPION_KILL",
+        "actor": "p4",
+        "victim": "p7",
+        "assisters": [
+          "p1",
+          "p2",
+          "p3",
+          "p5"
+        ]
+      },
+      {
+        "time": "18:22",
+        "type": "CHAMPION_KILL",
+        "actor": "p9",
+        "victim": "p5",
+        "assisters": [
+          "p7",
+          "p8",
+          "p10"
+        ]
+      },
+      {
+        "time": "18:22",
+        "type": "CHAMPION_KILL",
+        "actor": "p6",
+        "victim": "p4",
+        "assisters": [
+          "p7",
+          "p10"
+        ]
+      },
+      {
+        "time": "18:28",
+        "type": "CHAMPION_KILL",
+        "actor": "p6",
+        "victim": "p2",
+        "assisters": [
+          "p7",
+          "p9",
+          "p10"
+        ]
+      },
+      {
+        "time": "19:07",
+        "type": "CHAMPION_KILL",
+        "actor": "p1",
+        "victim": "p8",
+        "assisters": [
+          "p3"
+        ]
+      },
+      {
+        "time": "19:12",
+        "type": "CHAMPION_KILL",
+        "actor": "p4",
+        "victim": "p10",
+        "assisters": [
+          "p1",
+          "p3",
+          "p5"
+        ]
+      },
+      {
+        "time": "19:19",
+        "type": "CHAMPION_KILL",
+        "actor": "p9",
+        "victim": "p4",
+        "assisters": [
+          "p7",
+          "p8",
+          "p10"
+        ]
+      },
+      {
+        "time": "19:24",
+        "type": "CHAMPION_KILL",
+        "actor": "p2",
+        "victim": "p9",
+        "assisters": [
+          "p1",
+          "p3",
+          "p4",
+          "p5"
+        ]
+      },
+      {
+        "time": "19:27",
+        "type": "CHAMPION_KILL",
+        "actor": "p6",
+        "victim": "p5",
+        "assisters": [
+          "p7",
+          "p8",
+          "p9"
+        ]
+      },
+      {
+        "time": "19:29",
+        "type": "CHAMPION_KILL",
+        "actor": "p1",
+        "victim": "p6",
+        "assisters": [
+          "p2",
+          "p3",
+          "p5"
+        ]
+      },
+      {
+        "time": "19:37",
+        "type": "CHAMPION_KILL",
+        "actor": "p7",
+        "victim": "p2",
+        "assisters": [
+          "p9"
+        ]
+      },
+      {
+        "time": "19:42",
+        "type": "CHAMPION_KILL",
+        "actor": "p3",
+        "victim": "p7",
+        "assisters": [
+          "p1",
+          "p2"
+        ]
+      },
+      {
+        "time": "20:44",
+        "type": "CHAMPION_KILL",
+        "actor": "p4",
+        "victim": "p10",
+        "assisters": [
+          "p1",
+          "p2",
+          "p3",
+          "p5"
+        ]
+      },
+      {
+        "time": "20:46",
+        "type": "CHAMPION_KILL",
+        "actor": "p9",
+        "victim": "p5",
+        "assisters": [
+          "p6",
+          "p10"
+        ]
+      },
+      {
+        "time": "20:47",
+        "type": "CHAMPION_KILL",
+        "actor": "p7",
+        "victim": "p4",
+        "assisters": [
+          "p6",
+          "p10"
+        ]
+      },
+      {
+        "time": "21:30",
+        "type": "CHAMPION_KILL",
+        "actor": "p6",
+        "victim": "p3",
+        "assisters": [
+          "p8"
+        ]
+      },
+      {
+        "time": "21:35",
+        "type": "CHAMPION_KILL",
+        "actor": "p6",
+        "victim": "p1",
+        "assisters": [
+          "p8"
+        ]
+      },
+      {
+        "time": "21:37",
+        "type": "CHAMPION_KILL",
+        "actor": "p2",
+        "victim": "p6",
+        "assisters": [
+          "p1",
+          "p3"
+        ]
+      },
+      {
+        "time": "21:41",
+        "type": "CHAMPION_KILL",
+        "actor": "p2",
+        "victim": "p9",
+        "assisters": [
+          "p1",
+          "p3"
+        ]
+      },
+      {
+        "time": "21:43",
+        "type": "CHAMPION_KILL",
+        "actor": "p10",
+        "victim": "p2",
+        "assisters": [
+          "p7",
+          "p8",
+          "p9"
+        ]
+      },
+      {
+        "time": "21:49",
+        "type": "CHAMPION_KILL",
+        "actor": "p7",
+        "victim": "p5",
+        "assisters": [
+          "p9",
+          "p10"
+        ]
+      },
+      {
+        "time": "22:09",
+        "type": "CHAMPION_KILL",
+        "actor": "p7",
+        "victim": "p4",
+        "assisters": [
+          "p8"
+        ]
+      },
+      {
+        "time": "23:08",
+        "type": "CHAMPION_KILL",
+        "actor": "p5",
+        "victim": "p6",
+        "assisters": [
+          "p1",
+          "p2",
+          "p3"
+        ]
+      },
+      {
+        "time": "23:11",
+        "type": "CHAMPION_KILL",
+        "actor": "p9",
+        "victim": "p3",
+        "assisters": [
+          "p6",
+          "p8"
+        ]
+      },
+      {
+        "time": "23:12",
+        "type": "CHAMPION_KILL",
+        "actor": "p2",
+        "victim": "p9",
+        "assisters": [
+          "p1",
+          "p3",
+          "p4",
+          "p5"
+        ]
+      },
+      {
+        "time": "23:13",
+        "type": "CHAMPION_KILL",
+        "actor": "p7",
+        "victim": "p5",
+        "assisters": [
+          "p6",
+          "p8",
+          "p10"
+        ]
+      },
+      {
+        "time": "23:21",
+        "type": "CHAMPION_KILL",
+        "actor": "p4",
+        "victim": "p10",
+        "assisters": [
+          "p1",
+          "p2",
+          "p3",
+          "p5"
+        ]
+      },
+      {
+        "time": "23:29",
+        "type": "CHAMPION_KILL",
+        "actor": "p4",
+        "victim": "p7",
+        "assisters": [
+          "p1",
+          "p2",
+          "p3",
+          "p5"
+        ]
+      },
+      {
+        "time": "23:29",
+        "type": "CHAMPION_KILL",
+        "actor": "p8",
+        "victim": "p2",
+        "assisters": [
+          "p7"
+        ]
+      },
+      {
+        "time": "23:59",
+        "type": "CHAMPION_KILL",
+        "actor": "p9",
+        "victim": "p4",
+        "assisters": [
+          "p8"
+        ]
+      },
+      {
+        "time": "24:14",
+        "type": "CHAMPION_KILL",
+        "actor": "p3",
+        "victim": "p6",
+        "assisters": [
+          "p1",
+          "p5"
+        ]
+      },
+      {
+        "time": "24:22",
+        "type": "CHAMPION_KILL",
+        "actor": "p2",
+        "victim": "p9",
+        "assisters": [
+          "p1",
+          "p3",
+          "p5"
+        ]
+      },
+      {
+        "time": "24:29",
+        "type": "CHAMPION_KILL",
+        "actor": "p2",
+        "victim": "p7",
+        "assisters": [
+          "p1",
+          "p3",
+          "p5"
+        ]
+      },
+      {
+        "time": "24:31",
+        "type": "CHAMPION_KILL",
+        "actor": "p3",
+        "victim": "p10",
+        "assisters": [
+          "p1",
+          "p2",
+          "p5"
+        ]
+      },
+      {
+        "time": "24:40",
+        "type": "BUILDING_KILL",
+        "actor": "p1",
+        "assisters": [
+          "p3",
+          "p5"
+        ],
+        "object": "兵营"
+      },
+      {
+        "time": "24:46",
+        "type": "CHAMPION_KILL",
+        "actor": "p8",
+        "victim": "p2"
+      },
+      {
+        "time": "24:48",
+        "type": "CHAMPION_KILL",
+        "actor": "p3",
+        "victim": "p8",
+        "assisters": [
+          "p5"
+        ]
+      },
+      {
+        "time": "24:48",
+        "type": "CHAMPION_KILL",
+        "actor": "p8",
+        "victim": "p1",
+        "assisters": [
+          "p7"
+        ]
+      },
+      {
+        "time": "24:50",
+        "type": "CHAMPION_KILL",
+        "actor": "p8",
+        "victim": "p3",
+        "assisters": [
+          "p10"
+        ]
+      },
+      {
+        "time": "24:51",
+        "type": "BUILDING_KILL",
+        "actor": "p5",
+        "assisters": [
+          "p3"
+        ],
+        "object": "中路门牙塔"
+      },
+      {
+        "time": "24:54",
+        "type": "CHAMPION_KILL",
+        "actor": "p8",
+        "victim": "p5"
+      },
+      {
+        "time": "25:14",
+        "type": "CHAMPION_KILL",
+        "actor": "p6",
+        "victim": "p4",
+        "assisters": [
+          "p9"
+        ]
+      },
+      {
+        "time": "26:00",
+        "type": "CHAMPION_KILL",
+        "actor": "p9",
+        "victim": "p5",
+        "assisters": [
+          "p6",
+          "p8",
+          "p10"
+        ]
+      },
+      {
+        "time": "26:03",
+        "type": "CHAMPION_KILL",
+        "actor": "p7",
+        "victim": "p3",
+        "assisters": [
+          "p8",
+          "p9"
+        ]
+      },
+      {
+        "time": "26:07",
+        "type": "CHAMPION_KILL",
+        "actor": "p4",
+        "victim": "p7",
+        "assisters": [
+          "p1",
+          "p2",
+          "p3"
+        ]
+      },
+      {
+        "time": "26:12",
+        "type": "CHAMPION_KILL",
+        "actor": "p2",
+        "victim": "p10",
+        "assisters": [
+          "p1",
+          "p3",
+          "p4"
+        ]
+      },
+      {
+        "time": "26:16",
+        "type": "CHAMPION_KILL",
+        "actor": "p4",
+        "victim": "p9",
+        "assisters": [
+          "p1",
+          "p2",
+          "p3"
+        ]
+      },
+      {
+        "time": "26:21",
+        "type": "CHAMPION_KILL",
+        "actor": "p2",
+        "victim": "p6",
+        "assisters": [
+          "p1"
+        ]
+      },
+      {
+        "time": "26:26",
+        "type": "CHAMPION_KILL",
+        "actor": "p8",
+        "victim": "p4",
+        "assisters": [
+          "p6",
+          "p9",
+          "p10"
+        ]
+      },
+      {
+        "time": "26:53",
+        "type": "CHAMPION_KILL",
+        "actor": "p2",
+        "victim": "p8",
+        "assisters": [
+          "p1"
+        ]
+      },
+      {
+        "time": "26:54",
+        "type": "CHAMPION_KILL",
+        "actor": "p7",
+        "victim": "p1",
+        "assisters": [
+          "p8"
+        ]
+      },
+      {
+        "time": "26:54",
+        "type": "BUILDING_KILL",
+        "actor": "p2",
+        "assisters": [
+          "p1"
+        ],
+        "object": "中路门牙塔"
+      },
+      {
+        "time": "27:05",
+        "type": "CHAMPION_KILL",
+        "actor": "p7",
+        "victim": "p2",
+        "assisters": [
+          "p6",
+          "p8",
+          "p10"
+        ]
+      },
+      {
+        "time": "27:34",
+        "type": "CHAMPION_KILL",
+        "actor": "p9",
+        "victim": "p4",
+        "assisters": [
+          "p7"
+        ]
+      },
+      {
+        "time": "27:37",
+        "type": "CHAMPION_KILL",
+        "actor": "p7",
+        "victim": "p3",
+        "assisters": [
+          "p9"
+        ]
+      },
+      {
+        "time": "27:41",
+        "type": "CHAMPION_KILL",
+        "actor": "p6",
+        "victim": "p5",
+        "assisters": [
+          "p8",
+          "p10"
+        ]
+      },
+      {
+        "time": "28:01",
+        "type": "CHAMPION_KILL",
+        "actor": "p2",
+        "victim": "p7",
+        "assisters": [
+          "p1"
+        ]
+      },
+      {
+        "time": "28:15",
+        "type": "CHAMPION_KILL",
+        "actor": "p2",
+        "victim": "p10",
+        "assisters": [
+          "p1"
+        ]
+      },
+      {
+        "time": "28:22",
+        "type": "CHAMPION_KILL",
+        "actor": "p2",
+        "victim": "p9"
+      },
+      {
+        "time": "28:22",
+        "type": "CHAMPION_KILL",
+        "actor": "p6",
+        "victim": "p4"
+      },
+      {
+        "time": "28:22",
+        "type": "CHAMPION_KILL",
+        "actor": "p4",
+        "victim": "p6",
+        "assisters": [
+          "p1",
+          "p2"
+        ]
+      },
+      {
+        "time": "28:56",
+        "type": "BUILDING_KILL",
+        "actor": "p1",
+        "assisters": [
+          "p3",
+          "p5"
+        ],
+        "object": "兵营"
+      },
+      {
+        "time": "28:57",
+        "type": "CHAMPION_KILL",
+        "actor": "p2",
+        "victim": "p7",
+        "assisters": [
+          "p1",
+          "p3",
+          "p5"
+        ]
+      }
+    ],
+    "integrity": {
+      "playerCount": 10,
+      "distinctPids": 10,
+      "unresolvedIdentity": 0
+    }
+  },
+  "result": {
+    "verdict": "龙王29杀17万伤害压死比赛，我方丢兵营后无力回天",
+    "insight": "前1.0 分钟双方互有来回，但10:18-11:01连续丢中内塔与外塔后主动权易手。16:55与18:01连丢两座兵营，24:51再丢门牙塔，26:54被破第二座门牙，28:56第三座兵营告破，比赛失去悬念。",
+    "teamInsight": {
+      "compositionNote": "我方以死歌、卡尔萨斯、塞拉斯等法系与凯隐、普朗克战士为主，缺乏稳定前排；对方龙王、辛德拉双法师配合赛娜、猴子、特朗德尔，持续消耗与回复能力更完整。"
+    },
+    "players": [
+      {
+        "pid": "p6",
+        "label": "NORMAL",
+        "score": 5.2,
+        "reason": "参团率仅0.51，19杀但16死，伤害每分钟2012尚可，但中期多次阵亡与队伍丢塔节奏重合。",
+        "evidence": [
+          "参团率0.51，低于大乱斗正常区间",
+          "16次死亡，timeDead 546秒",
+          "10:41阵亡后11:01我方中路外塔告破"
+        ]
+      },
+      {
+        "pid": "p7",
+        "label": "NORMAL",
+        "score": 4.8,
+        "reason": "承伤与回复极高，但21死冠绝全队，参团率0.57，多次死亡直接伴随丢塔丢兵营。",
+        "evidence": [
+          "21次死亡，timeDead 603秒",
+          "10:18参与推掉对方中路内塔后，14:45起连续阵亡",
+          "16:55阵亡时段内对方推掉兵营"
+        ]
+      },
+      {
+        "pid": "p8",
+        "label": "CARRY",
+        "score": 8.6,
+        "reason": "每分钟伤害5699全队最高，24杀42助攻，参团率0.77，是队伍唯一持续输出点。",
+        "evidence": [
+          "每分钟伤害5699.2，全队最高",
+          "24杀42助攻，参团率0.77",
+          "15:14击杀路人壬，17:13击杀路人辛，持续压制"
+        ]
+      },
+      {
+        "pid": "p9",
+        "label": "NORMAL",
+        "score": 5.8,
+        "reason": "承伤与减伤极高，参团率0.67，但20杀16死，作为前排未能阻止对方推进。",
+        "evidence": [
+          "承伤148503，减伤293768",
+          "参团率0.67，20杀16死",
+          "17:34阵亡后17:54我方中路内塔告破"
+        ]
+      },
+      {
+        "pid": "p10",
+        "label": "BLAME",
+        "score": 3.8,
+        "reason": "参团率仅0.51，伤害每分钟1212，21死，多次关键节点阵亡导致丢塔丢兵营。",
+        "evidence": [
+          "参团率0.51，21次死亡",
+          "16:55阵亡时段内对方推掉兵营",
+          "24:31阵亡后24:40我方兵营告破"
+        ]
+      },
+      {
+        "pid": "p1",
+        "label": "CARRY",
+        "score": 8.4,
+        "reason": "参团率0.81，69助攻，ccTime 1336，每分钟伤害2843，是对方推进与团战核心。",
+        "evidence": [
+          "参团率0.81，69助攻",
+          "ccTime 1336，全场最高",
+          "24:40参与推掉兵营，28:56再破兵营"
+        ]
+      },
+      {
+        "pid": "p2",
+        "label": "CARRY",
+        "score": 9.5,
+        "reason": "29杀54助攻，每分钟伤害5839，参团率0.87，经济与输出全面压制，主导比赛走向。",
+        "evidence": [
+          "每分钟伤害5839，29杀54助攻",
+          "参团率0.87，金币53476",
+          "26:54参与推掉门牙塔，28:57击杀路人庚"
+        ]
+      },
+      {
+        "pid": "p3",
+        "label": "CARRY",
+        "score": 8.2,
+        "reason": "参团率0.84，63助攻，治疗70918，伤害每分钟2587，持续为团队提供输出与回复。",
+        "evidence": [
+          "参团率0.84，63助攻",
+          "治疗70918，每分钟治疗2431",
+          "11:01参与推掉中路外塔，24:48击杀路人辛"
+        ]
+      },
+      {
+        "pid": "p4",
+        "label": "NORMAL",
+        "score": 5.5,
+        "reason": "伤害每分钟2407，参团率0.60，19死，输出尚可但死亡偏多，未能扭转局势。",
+        "evidence": [
+          "参团率0.60，19次死亡",
+          "每分钟伤害2407",
+          "26:16击杀路人壬，28:22阵亡"
+        ]
+      },
+      {
+        "pid": "p5",
+        "label": "NORMAL",
+        "score": 5,
+        "reason": "参团率0.74，伤害每分钟2963，但22死，多次阵亡伴随丢塔丢兵营。",
+        "evidence": [
+          "22次死亡，timeDead 665秒",
+          "参团率0.74，每分钟伤害2963",
+          "18:22阵亡后18:01已丢兵营，24:54阵亡"
+        ]
+      }
+    ]
+  },
+  "names": {
+    "p6": "路人己",
+    "p7": "路人庚",
+    "p8": "路人辛",
+    "p9": "路人壬",
+    "p10": "路人癸",
+    "p1": "路人甲",
+    "p2": "路人乙",
+    "p3": "路人丙",
+    "p4": "路人丁",
+    "p5": "路人戊"
+  }
+}

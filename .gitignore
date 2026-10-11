@@ -1,0 +1,29 @@
+# ── 运行期数据：含真实战绩与昵称，绝不入库 ──
+data/
+
+# ── 界面快照：渲染结果里带真实昵称（restoreNames 还原过）──
+preview/
+
+# ── AI 工作区记忆：私有笔记，不进仓库 ──
+.workbuddy/
+
+# ── 内部参考材料 ──
+_ref/
+
+# ── 依赖与构建产物 ──
+node_modules/
+dist/
+
+# ── 构建缓存：Electron 运行时 / rcedit（百兆级，别入库）──
+.cache/
+
+# ── 临时目录 ──
+.seatest/
+.tmp-gamedata/
+.tmp-shots/
+
+# ── 常规忽略 ──
+*.log
+*.tmp
+.DS_Store
+Thumbs.db
